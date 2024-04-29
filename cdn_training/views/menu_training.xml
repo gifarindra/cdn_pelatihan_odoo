@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <!-- omenur snippet This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+        <menuitem id="training_menu_root" name="Training Odoo" sequence="1" web_icon = "cdn_training,static/description/icon.png"/>
+
+        <!-- omenuc snippet This Menu Item Must have a parent -->
+        <menuitem id="training_menu_categ" name="Training Kursus" parent="training_menu_root" sequence="30"/>
+        <menuitem id="pengaturan_menu_categ" name="Pengaturan" parent="training_menu_root" sequence="50"/>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="wilayah_menu_categ" name="Data Wilayah" parent="pengaturan_menu_categ" sequence="30"/>
+
+    
+    </data>
+    
+</odoo>

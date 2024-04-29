@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <!-- ref.provinsi tree view -->
+        <record id="ref_provinsi_view_tree" model="ir.ui.view">
+            <field name="name">ref.provinsi.view.tree</field>
+            <field name="model">ref.provinsi</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="kode"/>
+                    <field name="singkatan" />
+                    <field name="deskripsi" />
+                    
+                </tree>
+            </field>
+        </record>
+
+        <!-- ref.provinsi form view oform -->
+        <record id="ref_provinsi_view_form" model="ir.ui.view">
+            <field name="name">ref.provinsi.view.form</field>
+            <field name="model">ref.provinsi</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here ofi-->
+                            <field name="name"/>
+                            <field name="kode" />
+                            <field name="singkatan"/>
+                            <field name="deskripsi" />
+                        </group>
+                        <notebook>
+                            <page name="kota" string="Data Kota">
+                                <field name="kota_ids" />
+                                    <tree>
+                                        <field name="name" />
+                                        <field name="kode" />
+                                        <field name="singkatan" />
+                                    </tree>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ref.provinsi action window -->
+        <record id="ref_provinsi_action" model="ir.actions.act_window">
+            <field name="name">Data Provinsi</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ref.provinsi</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="provinsi_menu_act" name="Provinsi" parent="wilayah_menu_categ" action="ref_provinsi_action" sequence="10"/>
+    
+    </data>
+    
+</odoo>

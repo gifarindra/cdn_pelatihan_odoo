@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- training.course tree view otree snippet-->
+        <record id="training_session_view_tree" model="ir.ui.view">
+            <field name="name">training.session.view.tree</field>
+            <field name="model">training.session</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- ofi snippet -->
+                    <field name="name"/>
+                    <field name="course_id"/>
+                    <field name="start_date"/>
+                    <field name="duration" />
+                    <field name="seats"/>
+                    <field name="instruktur_id" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- training.session form view -->
+        <record id="training_session_view_form" model="ir.ui.view">
+            <field name="name">training.session.view.form</field>
+            <field name="model">training.session</field>
+            <field name="arch" type="xml">
+                <form string="">
+                <header>
+                    <button string="Konfirmasi" states="draft" name="action_confirm" type="object" class="oe_highlight"/>
+                    <button string="Selesai" states ="progress" name="action_done" type="object" class="oe_highlight"/>
+                    <button string="Set Draft" states ="progress" name="action_draft" type="object" groups="cdn_training.group_training_admin"/>
+                    <field name="state" widget ='statusbar' statusbar_visible='draft, progress, done' />
+                </header>
+                    <sheet>
+                        <widget name="web_ribbon" text="Selesai" bg_color="bg-info" attrs="{'invisible':[('state','!=','done')]}" />
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="name" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="course_id" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="start_date" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="duration" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="seats" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="instruktur_id" attrs="{'readonly':[('state','=','done')]}"/>
+                        </group>
+                        <group name="identitas_instruktur" string="Identitas Instruktur">
+                            <group>
+                                <field name="alamat" />
+                                <field name="no_hp" />
+                            </group>
+                            <group>
+                                <field name="email" />
+                                <field name="jenis_kel"/>   
+                            </group>
+                        </group>
+                        <group>
+                            <field name="jml_peserta" />
+                        </group>
+                        <notebook>
+                            <page name="peserta" string="Daftar Peserta Hadir" >
+                                <field name="peserta_ids" attrs="{'readonly':[('state','=','done')]}">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="jenis_kel"/>
+                                        <field name="mobile"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- training.session action window oact snippet-->
+        <record id="training_session_action" model="ir.actions.act_window">
+            <field name="name">Sesi Kursus</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">training.session</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                
+                </p>
+            </field>
+        </record>
+        
+        <!-- omenua snippet This Menu Item must have a parent and an action -->
+        <menuitem id="sesi_menu_act" name="Sesi Kursus" parent="training_menu_categ" action="training_session_action" sequence="10" />
+    
+    </data>
+    
+</odoo>
+
