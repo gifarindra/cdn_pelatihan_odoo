@@ -26,6 +26,8 @@
         'security/groups.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
+        'data/sequence_data.xml',
+        'wizards/training_wizard.xml',
         'views/templates.xml',
         'views/menu_training.xml',
         'views/training_session.xml',
@@ -35,7 +37,7 @@
         'views/kota.xml',
         'views/kecamatan.xml',
         'views/desa.xml',
-        'views/peserta.xml'
+        'views/peserta.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

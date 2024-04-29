@@ -30,7 +30,7 @@ class TrainingSession(models.Model):
     email = fields.Char(string='Email', related='instruktur_id.email', tracking=True)
     jenis_kel = fields.Selection(related='instruktur_id.jenis_kel', tracking=True)
     peserta_ids = fields.Many2many(comodel_name='peserta', string='Peserta', tracking=True)
-    jml_peserta = fields.Char(compute='_compute_jml_peserta', string='Jumlah Peserta', tracking=True)
+    jml_peserta = fields.Integer(compute='_compute_jml_peserta', string='Jumlah Peserta', tracking=True)
     state = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('progress', 'Sedang Berlangsung'),('done','Selesai')], default="draft", tracking=True)
     
     
@@ -47,5 +47,4 @@ class TrainingSession(models.Model):
     
     def action_draft(self):
         self.state = 'draft'
-
 

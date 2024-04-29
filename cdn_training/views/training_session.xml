@@ -6,7 +6,7 @@
             <field name="name">training.session.view.tree</field>
             <field name="model">training.session</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-danger="jml_peserta==0">
                     <!-- ofi snippet -->
                     <field name="name"/>
                     <field name="course_id"/>
@@ -14,6 +14,7 @@
                     <field name="duration" />
                     <field name="seats"/>
                     <field name="instruktur_id" />
+                    <field name="jml_peserta" />
                 </tree>
             </field>
         </record>
@@ -75,12 +76,25 @@
             </field>
         </record>
 
+        <!-- training.session calendar view ocal snippet -->
+        <record id="training_session_view_calendar" model="ir.ui.view">
+            <field name="name">training.session.view.calendar</field>
+            <field name="model">training.session</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar Description" date_start="start_date" mode="month">
+                    <!-- Add your fields here -->
+                    <field name="name" />
+                    <field name="instruktur_id" filters='1'/>
+                </calendar>
+            </field>
+        </record>
+
         <!-- training.session action window oact snippet-->
         <record id="training_session_action" model="ir.actions.act_window">
             <field name="name">Sesi Kursus</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">training.session</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar,kanban</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     <!-- Add Text Here -->

@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 
 
-class ResPartner(models.Model):
+class ResPartner(models.Model): #omod
     _inherit = 'res.partner'
 
     jenis_kel = fields.Selection(string='Jenis Kelamin', selection=[('L', 'Laki-laki'), ('P', 'Perempuan'),])
