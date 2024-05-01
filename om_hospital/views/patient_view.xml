@@ -48,9 +48,6 @@
         </record>
 
         
-        
-
-
         <!-- hospital.patient search view osearch-->
         <!--Mencari dengan field-->
         <record id="hospital_patient_view_search" model="ir.ui.view">
@@ -78,6 +75,9 @@
                     <field name="ref" /> 
                     <field name="age" />
                     <field name="gender" />
+                    <searchpanel>
+                      <field name="gender" string="Gender" enable_counters="1" select="multi"/> <!--adding search panel inside the hospital module-->
+                    </searchpanel>
                 </search>
             </field>
         </record>
