@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <!-- hospital.patient tree view  otree-->
+        <record id="hospital_patient_view_tree" model="ir.ui.view">
+            <field name="name">hospital.patient.view.tree</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name" string="Patient Name" />
+                    <field name="ref" />
+                    <field name="age" />
+                    <field name="gender" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- hospital.patient form view oform -->
+        <record id="hospital_patient_view_form" model="ir.ui.view">
+            <field name="name">hospital.patient.view.form</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group> <!--this group tag makes the fields below have their labels-->
+                            <group>
+                                <!-- Add your fields here -->
+                                <field name="name" />
+                                <field name="age" />
+                            </group>
+                            <group >
+                                <!-- Add your fields here -->
+                                <field name="ref" />
+                                <field name="gender" />
+                                <field name="active" invisible = "True"/> <!--add the archive feature inside the form view-->
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/> <!--#tracking the field with the chatter from py-->
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        
+        
+
+
+        <!-- hospital.patient search view osearch-->
+        <!--Mencari dengan field-->
+        <record id="hospital_patient_view_search" model="ir.ui.view">
+            <field name="name">hospital.patient.view.search</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <search string="Search Description">
+                        <!-- Jika dlm filter hanya ada context dgn key value group_by, maka akan masuk ke grouping -->
+                        <!-- Jika dlm filter  ada context domain dan context, maka akan masuk ke grouping -->
+                        <!--Jika hnya ada domain, maka masuk ke filtering dengan syntax list - tuple [('field_name', 'komparator', value)]-->
+                        <!-- <separator/> membuat pemisah/separator pada filter male dan female(tepat setelah tag) guna melakukan pencarian dengan operasi AND (jk tnp separator akan melakukan operasi OR)-->
+                        <!--field domain untuk mencari dengan 2 parameter "name" dan "ref" menggunakan field name-->
+                        <!--tag group jg bisa digunakan sbg pemisah/separator-->
+                    <filter name="group_by_age" string="Age" context="{'group_by': 'age'}" />
+                    <!--<filter name="group_by_male_gender" string="Group by Male Gender" domain="[('gender', '=', 'male')]" context="{'group_by': 'gender'}" /> -->
+                    <filter name="filter_male" string  ="Male"   domain="[('gender', '=', 'male')]" />
+                    <filter name="filter_female" string="Female" domain="[('gender', '=', 'female')]" />
+                    <separator/>
+                    <filter name="filter_kids" string="Kids" domain="[('age', '&lt;=', '5')]" /> <!--defining kids patient with age less than 5-->
+                    <filter name="filter_archived" string="Archived" domain="[('active', '=', False)]" />
+                    <group expand="0" string="Group by">
+                        <filter name="group_by_gender" string="Gender" context="{'group_by': 'gender'}" />
+                    </group> 
+                    <field name="name" string="Patient Name" filter_domain="['|',('name','ilike',self),('ref','ilike',self)]"/>
+                    <field name="ref" /> 
+                    <field name="age" />
+                    <field name="gender" />
+                </search>
+            </field>
+        </record>
+
+        <!-- hospital.patient action window  oact-->
+        <!--context search_default_filter_name untuk memberi default filter ke searchbar -->
+        <record id="hospital_patient_action" model="ir.actions.act_window">
+            <field name="name">Patients</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hospital.patient</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_filter_male':True,'search_default_group_by_gender':True}</field> 
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                    Create your first patient!
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                
+                </p>
+            </field>
+        </record>
+
+
+        <!-- This Menu Item must have a parent and an action omenua -->
+        <menuitem id="hospital_patient_menu_act" name="Patient" parent="hospital_menu_categ" action="hospital_patient_action" sequence="10"/>
+    
+    </data>
+    
+</odoo>

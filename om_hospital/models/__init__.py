@@ -1,4 +1,4 @@
 # -*- coding: utf-8 -*-
 
 from . import models
-from . import hospital_data
+from . import patient

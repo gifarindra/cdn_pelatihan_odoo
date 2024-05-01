@@ -5,9 +5,7 @@
         <menuitem id="hospital_menu_root" name="Hospital" sequence="1" web_icon="om_hospital,static/description/icon.png"/>
 
         <!-- This Menu Item Must have a parent -->
-        <menuitem id="hospital_menu_categ" name="Hospital" parent="hospital_menu_root" sequence="10"/>
-        <!-- This Menu Item Must have a parent -->
-        <menuitem id="setting_menu_categ" name="Setting" parent="hospital_menu_root" sequence="20"/>
+        <menuitem id="hospital_menu_categ" name="Patient Details" parent="hospital_menu_root" sequence="10"/>
 
     
     </data>
