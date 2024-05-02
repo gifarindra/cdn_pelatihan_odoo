@@ -38,6 +38,7 @@
         'views/kecamatan.xml',
         'views/desa.xml',
         'views/peserta.xml',
+        'views/jabatan.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

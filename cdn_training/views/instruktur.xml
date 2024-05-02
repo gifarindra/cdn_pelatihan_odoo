@@ -10,6 +10,8 @@
                 <tree>
                     <!-- ofi snippet -->
                     <field name="name"/>
+                    <field name="jabatan_id" />
+                    <field name="jenis_jabatan" />
                     <field name="street"/>
                     <field name="mobile"/>
                     <field name="email"/>
@@ -22,15 +24,22 @@
             <field name="name">instruktur.view.form</field>
             <field name="model">instruktur</field>
             <field name="arch" type="xml">
-                <form string="">
+                <form string="">    
+                    <header>
+                        <button string="Update Jabatan" name="action_update_jabatan" type="object" class="oe_highlight"/>
+                    </header>
                     <sheet>
+                    <field name="image_1920" widget="image" class="oe_avatar" style="margin-top:50px;" />
                         <group>
                             <!-- ofi snippet -->
                         <field name="name"/>
+                        <field name="jabatan_id" />
+                        <field name="jenis_jabatan" attrs="{'invisible' : True}"/>
+                        <field name="jabatan_staff" attrs="{'invisible':[('jenis_jabatan','!=','staff')]}"/> 
                         <field name="street"/>
                         <field name="mobile"/>
                         <field name="email"/>
-                        <field name="keahlian_ids" widget ='many2many_tags'/>    
+                        <field name="keahlian_ids" widget ='many2many_tags'/>
                         </group>
                         <group name="alamat" string="Alamat Instruktur">
                             <group>
@@ -54,6 +63,7 @@
                 <kanban version="7.0">
                     <field name="id" />
                     <field name="name" />
+                    <field name="jabatan_id" />
                     <field name="street" />
                     <field name="mobile" />
                     <field name="email" />

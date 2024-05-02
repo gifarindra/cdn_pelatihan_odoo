@@ -60,7 +60,6 @@
                     <filter name="group_by_provinsi" string="Grupkan berdasarkan provinsi" context="{'group_by': 'provinsi_id'}" />
                     <field name="name" />
                     <field name="kode" />
-                    
                 </search>
             </field>
         </record>

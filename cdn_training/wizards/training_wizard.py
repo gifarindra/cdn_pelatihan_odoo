@@ -11,6 +11,8 @@ class WizardTraining(models.TransientModel):
     session_id = fields.Many2one(comodel_name='training.session', string='Sesi Training', default=_default_sesi)
     peserta_ids = fields.Many2many(comodel_name='peserta', string='Peserta Training')
     session_ids = fields.Many2many(comodel_name='training.session', string='Multi Training Session', default=_default_sesi)
+    # state_id = fields.Many2one(comodel_name='training.session.state', string='State',) untuk button state = done incomp
+    
     
     
     def tambah_peserta(self):

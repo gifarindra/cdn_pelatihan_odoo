@@ -12,9 +12,11 @@
                             <!-- Add your fields here -->
                             <field name="session_id" />
                             <field name="peserta_ids" />
+                            <!--<field name="state_id" untuk button saat state = done incompl/>-->
                         </group>
                         <footer>
-                            <button name="tambah_peserta" string="Tambah Peserta" type="object" class="btn-primary" confirm="Apakah Anda yakin akan menambah Peserta pada Sesi ini ?"/>
+                            <!--attrs="{'invisible':[('state_id','=','done')]}" untuk button saat state = done incompl-->
+                            <button name="tambah_peserta" string="Tambah Peserta" type="object" class="btn-primary" confirm="Apakah Anda yakin akan menambah Peserta pada Sesi ini ?" />
                             <button string="Batal" class="btn-secondary" special="cancel"/>
                         </footer>
                 </form>
@@ -22,8 +24,8 @@
         </record>
 
         <!-- wizard.training action window -->
-        <record id="wizard_training_action" model="ir.actions.act_window">
-            <field name="name">Tambah Peserta Training</field>
+        <record id="wizard_training_action" model="ir.actions.act_window" >
+            <field name="name" >Tambah Peserta Training</field>
             <field name="res_model">wizard.training</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>

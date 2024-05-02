@@ -1,7 +1,6 @@
 from odoo import models, fields, api
 
 
-
 class RefProvinsi(models.Model):
     _name = 'ref.provinsi'
     _description = 'Ref Provinsi'
@@ -46,7 +45,6 @@ class RefDesa(models.Model):
     deskripsi = fields.Text(string='Deskripsi')
     
     
-
     
     
     
