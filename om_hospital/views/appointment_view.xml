@@ -10,6 +10,8 @@
                 <tree>
                     <!-- Add your fields here -->
                     <field name="patient_id" />
+                    <field name="appointment_time" />
+                    <field name="booking_date" />
                 </tree>
             </field>
         </record>
@@ -25,6 +27,10 @@
                             <!-- Add your fields here -->
                             <group >
                                 <field name="patient_id" />
+                                <field name="booking_date" />
+                            </group>
+                            <group>
+                                <field name="appointment_time" />
                             </group>
                         </group>
                     </sheet>
@@ -67,7 +73,7 @@
         </record>
 
         <!-- This Menu Item must have a parent and an action -->
-        <menuitem id="appointment_menu_act" name="Appointments" parent="hospital_menu_categ" action="hospital_appointment_action" sequence="15"/>
+        <menuitem id="appointment_menu_act" name="Appointments" parent="hospital_menu_appointments_categ" action="hospital_appointment_action" sequence="15"/>
     
     </data>
     

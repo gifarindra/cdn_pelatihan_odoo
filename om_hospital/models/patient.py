@@ -9,5 +9,5 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     name   = fields.Char(string='Name', tracking=True)   #fields ofc  #tracking the field with the chatter
     ref    = fields.Char(string='Reference', tracking=True)
     age    = fields.Integer('Age', tracking=True) #ofint
-    gender = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),], tracking=True) #ofsel
+    gender = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),], tracking=True, default='male') #ofsel
     active = fields.Boolean(string='Active', default=True, tracking=True) #add the archive feature on the form view 
