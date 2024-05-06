@@ -28,6 +28,7 @@
                             <group>
                                 <!-- Add your fields here -->
                                 <field name="name" />
+                                <field name="date_of_birth" />
                                 <field name="age" />
                             </group>
                             <group >
@@ -61,12 +62,13 @@
                         <!-- <separator/> membuat pemisah/separator pada filter male dan female(tepat setelah tag) guna melakukan pencarian dengan operasi AND (jk tnp separator akan melakukan operasi OR)-->
                         <!--field domain untuk mencari dengan 2 parameter "name" dan "ref" menggunakan field name-->
                         <!--tag group jg bisa digunakan sbg pemisah/separator-->
+                        <!--filtering tidak bisa menggunakan computed field    #jika age dijadikan computed field, maka field age akan dibuat dalam postgres stlh dob diberi value maka filtering berdasarkan computed field tdk dpt dilakukan -->
                     <filter name="group_by_age" string="Age" context="{'group_by': 'age'}" />
                     <!--<filter name="group_by_male_gender" string="Group by Male Gender" domain="[('gender', '=', 'male')]" context="{'group_by': 'gender'}" /> -->
                     <filter name="filter_male" string  ="Male"   domain="[('gender', '=', 'male')]" />
                     <filter name="filter_female" string="Female" domain="[('gender', '=', 'female')]" />
                     <separator/>
-                    <filter name="filter_kids" string="Kids" domain="[('age', '&lt;=', '5')]" /> <!--defining kids patient with age less than 5-->
+                    <!-- <filter name="filter_kids" string="Kids" domain="[('age', '&lt;=', '5')]" /> defining kids patient with age less than 5 -->
                     <filter name="filter_archived" string="Archived" domain="[('active', '=', False)]" />
                     <group expand="0" string="Group by">
                         <filter name="group_by_gender" string="Gender" context="{'group_by': 'gender'}" />

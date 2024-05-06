@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 {
+    #https://www.youtube.com/playlist?list=PLqRRLx0cl0hoZM788LH5M8q7KhiXPyuVU
     'name': "(Training) Odoo Mates ERP Hospital", #module name shown in the odoo 
 
     'summary': """
         Hospital Management System
-        (Odoo Mates Odoo15 ERP Youtube Tutorial)""", #ringkasan module
+        (Odoo Mates Odoo15 ERP Youtube Tutorial) https://www.youtube.com/playlist?list=PLqRRLx0cl0hoZM788LH5M8q7KhiXPyuVU """, #ringkasan module
 
     'description': """
         Hospital Management System
-        (Presentasi ERP Hospital dengan Odoomates Youtube Tutorial) 
+        (Presentasi ERP Hospital dengan Odoomates Youtube Tutorial) https://www.youtube.com/playlist?list=PLqRRLx0cl0hoZM788LH5M8q7KhiXPyuVU 
     """,#deskripsi umum
 
     'author': "Cendana2000", #developer info
