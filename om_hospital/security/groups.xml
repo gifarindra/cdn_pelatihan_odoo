@@ -25,9 +25,6 @@
             <field name="users" eval="[(4,ref('base.user_admin'))]"/>
         </record>
         
-        <record id="record_name" model="model_name">
-            <field name="field_name">field_value</field>
-        </record>
     </data>
     
 </odoo>
