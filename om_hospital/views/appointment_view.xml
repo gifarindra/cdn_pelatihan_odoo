@@ -7,11 +7,16 @@
             <field name="name">hospital.appointment.view.tree</field>
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
-                <tree> <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt -->
+                <tree decoration-success="state == 'done'" decoration-info="state == 'draft'" decoration-danger="state == 'cancel'" decoration-warning="state == 'in_consultation'"> <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt -->
                     <!-- Add your fields here -->
                     <field name="patient_id" />
                     <field name="appointment_time" />
                     <field name="booking_date" />
+                    <field name="state" decoration-success="state == 'done'" 
+                           decoration-info="state == 'draft'"
+                           decoration-danger="state == 'cancel'"
+                           decoration-warning="state == 'in_consultation'"
+                           widget="badge" /> <!--penambahan field state dan memberikan widget badge serta decorationnya ke list view, success green info lightblue danger red warning yellow -->
                 </tree>
             </field>
         </record>
