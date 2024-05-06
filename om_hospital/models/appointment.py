@@ -15,10 +15,19 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     prescription     = fields.Html(string='Prescription')
     priority         = fields.Selection(string='Priority', 
                        selection=[('0', 'Normal'), ('1', 'Low'),('2','High'),('3','Very High')]) #penambahan widget priority lewat views
+    state            = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('in_consultation', 'In Consultation'),
+                       ('done', 'Done'), ('cancel', 'Cancelled')], default="draft", required=True) #state merupakan spesial keyword untuk menambahkan status pada suatu record, required berguna agar tidak ada record dengan state = 0
     
     
     #api onchange berubah saat terjadi saving record berbeda dengan depends
     @api.onchange('patient_id')  # penggunaan onchange mirip dengan related field namun bisa digunakan untk mengubah data dengan menerapkan readonly false pd python dan force_save pada view form/tree/etc
     def _onchange_patient_id(self):
         self.ref     = self.patient_id.ref #mengisi field hospital.appointment.ref dengan record ref dari field hospital.patient.ref melewati field m2o patient_id
+    
+    
+    def action_test(self):
+        self.state = 'draft'
+    
+    #penggunaan atr default cukup berguna untuk beberapa field, pahami kapan dan dimana penggunaannya!
+    
     

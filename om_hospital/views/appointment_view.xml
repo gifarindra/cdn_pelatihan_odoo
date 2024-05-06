@@ -23,8 +23,13 @@
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
+                        <header> <!--penempatan statusbar berada pada header form-->
+                            <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}" statusbar_visible="draft, in_consultation, done"/> <!--penggunaan statusbar menggunakan widget="statusbar"-->
+                            <!--value clickable agar statusbar dapat diklik scr manual -->
+                            <!--statusbar_visible agar menampilkan value selection state mana yang akan dimunculkan-->
+                        </header>
                         <div>
-                            <h1>
+                            <h1> <!--ukuran widget akan berdasarkan heading ini-->
                                 <field name="priority" widget="priority" class="mr-3"/> <!--penambahan widget priority-->
                             </h1>
                         </div>
@@ -38,6 +43,9 @@
                             </group>
                             <group>
                                 <field name="appointment_time" />
+                                <button string="Object Button" name="action_test" type="object" class="oe_highlight"/> <!--button dengan tipe object akan mencari function sesuai dgn atr name di modelnya class dgn highlight untuk memberi warna-->
+                                <button string="Action Button" name="%(hospital_patient_action)d" type="action" class="oe_highlight" confirm="Are you sure to proceed?"/> <!--button dengan tipe action akan mencari window action dengan hasil spt saat kita mengklik menu action dari window action tsb, confirm = confirmation popup-->
+                            
                             </group>
                         </group>
                         <notebook> <!--notebook dengan 2 pages-->
