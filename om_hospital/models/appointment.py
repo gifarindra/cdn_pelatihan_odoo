@@ -26,7 +26,13 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     
     
     def action_test(self):
-        self.state = 'draft'
+        return {
+            'effect': {
+                'fadeout': 'slow',
+                'message': 'Click Succesful!',
+                'type'   : 'rainbow_man', #rainbow effect (?) widget
+            }
+        }
     
     #penggunaan atr default cukup berguna untuk beberapa field, pahami kapan dan dimana penggunaannya!
     

@@ -26,5 +26,5 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
             if rec.date_of_birth: #mengambil tahun dari field dob jika field dob ada value
                 rec.age = today.year - rec.date_of_birth.year # membuat field age menjadi tahun skrg - tahun dob
             else:
-                rec.age = 0 # apabila tdk ada value di dob maka age = 0
+                rec.age = 1 # apabila tdk ada value di dob maka age = 0
         
