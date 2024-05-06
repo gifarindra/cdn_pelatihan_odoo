@@ -12,6 +12,8 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     appointment_time = fields.Datetime(string='Appointment Time', default=fields.Datetime.now)
     booking_date     = fields.Date(string='Booking Date',default=fields.Datetime.now) #format tanggal dapat diubah di settings, languages, en_US, dateformat
     ref              = fields.Char(string='Reference') #bisa diubah mjd readonly false
+    prescription     = fields.Html(string='Prescription')
+    
     
     #api onchange berubah saat terjadi saving record berbeda dengan depends
     @api.onchange('patient_id')  # penggunaan onchange mirip dengan related field namun bisa digunakan untk mengubah data dengan menerapkan readonly false pd python dan force_save pada view form/tree/etc

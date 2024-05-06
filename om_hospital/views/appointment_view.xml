@@ -35,6 +35,17 @@
                                 <field name="appointment_time" />
                             </group>
                         </group>
+                        <notebook>
+                            <page string="Prescription" name="prescription"> <!--untuk memunculkan label tambahkan group-->
+                                
+                                <field name="prescription" placeholder="Enter your prescription!"/> <!--placeholder agar memiliki nama-->
+                                
+                            </page>
+                            <page string="Pharmacy" name="pharmacy">
+                                <group>
+                                </group>
+                            </page>
+                        </notebook>
                     </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids"/>
