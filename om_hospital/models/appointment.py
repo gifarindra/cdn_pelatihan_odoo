@@ -13,6 +13,8 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     booking_date     = fields.Date(string='Booking Date',default=fields.Datetime.now) #format tanggal dapat diubah di settings, languages, en_US, dateformat
     ref              = fields.Char(string='Reference') #bisa diubah mjd readonly false
     prescription     = fields.Html(string='Prescription')
+    priority         = fields.Selection(string='Priority', 
+                       selection=[('0', 'Normal'), ('1', 'Low'),('2','High'),('3','Very High')]) #penambahan widget priority lewat views
     
     
     #api onchange berubah saat terjadi saving record berbeda dengan depends

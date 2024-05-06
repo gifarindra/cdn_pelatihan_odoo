@@ -7,7 +7,7 @@
             <field name="name">hospital.appointment.view.tree</field>
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree> <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt -->
                     <!-- Add your fields here -->
                     <field name="patient_id" />
                     <field name="appointment_time" />
@@ -23,6 +23,11 @@
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
+                        <div>
+                            <h1>
+                                <field name="priority" widget="priority" class="mr-3"/> <!--penambahan widget priority-->
+                            </h1>
+                        </div>
                         <group>
                             <!-- Add your fields here -->
                             <group >
@@ -35,7 +40,7 @@
                                 <field name="appointment_time" />
                             </group>
                         </group>
-                        <notebook>
+                        <notebook> <!--notebook dengan 2 pages-->
                             <page string="Prescription" name="prescription"> <!--untuk memunculkan label tambahkan group-->
                                 
                                 <field name="prescription" placeholder="Enter your prescription!"/> <!--placeholder agar memiliki nama-->
@@ -47,8 +52,8 @@
                             </page>
                         </notebook>
                     </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
+                <div class="oe_chatter"> <!--chatter uuntuk tracking-->
+                    <field name="message_follower_ids"/> 
                     <field name="activity_ids"/>
                     <field name="message_ids"/>
                 </div>
