@@ -101,7 +101,6 @@
             </field>
         </record>
 
-
         <!-- This Menu Item must have a parent and an action omenua -->
         <menuitem id="hospital_patient_menu_act" name="Patient" parent="hospital_menu_categ" action="hospital_patient_action" sequence="10"/>
     

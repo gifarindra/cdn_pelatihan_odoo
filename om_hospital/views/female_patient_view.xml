@@ -1,52 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo>
     <data>
-
-        <!-- hospital.patient tree view  otree-->
-        <record id="hospital_patient_female_view_tree" model="ir.ui.view">
-            <field name="name">Female Patients</field>
-            <field name="model">hospital.patient</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <!-- Add your fields here -->
-                    <field name="name" string="Patient Name" />
-                    <field name="ref" />
-                    <field name="age" />
-                    <field name="gender" />
-                </tree>
-            </field>
-        </record>
-
-        <!-- hospital.patient female form view -->
-        <record id="hospital_patient_female_view_form" model="ir.ui.view">
-            <field name="name">Female Patient</field>
-            <field name="model">hospital.patient</field>
-            <field name="arch" type="xml">
-                <form string="">
-                    <sheet>
-                        <group>
-                            <!-- Add your fields here -->
-                            <group>
-                                <!-- Add your fields here -->
-                                <field name="name" />
-                                <field name="age" />
-                            </group>
-                            <group >
-                                <!-- Add your fields here -->
-                                <field name="ref" />
-                                <field name="gender"/>
-                                <field name="active" invisible = "True"/> <!--add the archive feature inside the form view-->
-                            </group>
-                        </group>
-                    </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids"/>
-                        <field name="activity_ids"/>
-                        <field name="message_ids"/>
-                    </div>
-                </form>
-            </field>
-        </record>
     
         <!-- hospital.patient action window -->
         <!--To perform domain with OR operation use '|' before the tuple if there are two arguments-->
