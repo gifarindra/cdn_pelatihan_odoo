@@ -39,12 +39,14 @@
                                 <field name="patient_id" />
                                 <field name="ref" />
                                 <field name="gender" />
-                                <field name="booking_date" />
+                                <field name="booking_date" help="Date of booking"/>
                             </group>
                             <group>
                                 <field name="appointment_time" />
-                                <button string="Object Button" name="action_test" type="object" class="oe_highlight"/> <!--button dengan tipe object akan mencari function sesuai dgn atr name di modelnya class dgn highlight untuk memberi warna-->
-                                <button string="Action Button" name="%(hospital_patient_action)d" type="action" class="oe_highlight" confirm="Are you sure to proceed?"/> <!--button dengan tipe action akan mencari window action dengan hasil spt saat kita mengklik menu action dari window action tsb, confirm = confirmation popup-->
+                                <button string="Object Button" name="action_test" type="object" class="oe_highlight" 
+                                confirm="Do you want to execute the python code?" help="On clicking this button, you will execute a certain python code."/> <!--button dengan tipe object akan mencari function sesuai dgn atr name di modelnya class dgn highlight untuk memberi warna-->
+                                <button string="Action Button" name="%(hospital_patient_action)d" type="action" class="oe_highlight" 
+                                confirm="Are you sure to proceed?" help="On clicking this button, you will be redirected to patient records."/> <!--button dengan tipe action akan mencari window action dengan hasil spt saat kita mengklik menu action dari window action tsb, confirm = confirmation popup, help berfungsi untuk memunculkan tampilan popup yang berguna untuk mengartikan suatu field tanpa debug mode-->
                             
                             </group>
                         </group>
