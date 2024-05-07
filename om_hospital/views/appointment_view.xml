@@ -7,7 +7,7 @@
             <field name="name">hospital.appointment.view.tree</field>
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
-                <tree decoration-success="state == 'done'"  decoration-danger="state == 'cancel'" sample="1"> <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt -->
+                <tree decoration-success="state == 'done'"  decoration-danger="state == 'cancel'" sample="1" multi_edit="1"> <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt, multi_edit enable multiediting -->
                     <!-- Add your fields here -->
                     <field name="patient_id" />
                     <field name="ref" optional="hide"/> <!--penggunaan atribut optional menjadikan tree view memiliki dynamic field yang dapat dimunculkan atau disembunyikan scr manual oleh user-->
@@ -32,8 +32,13 @@
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
-                        <header> <!--penempatan statusbar berada pada header form-->
-                            <field name="state" widget="statusbar" nolabel="1" options="{'clickable':'1'}" statusbar_visible="draft, in_consultation, done"/> <!--penggunaan statusbar menggunakan widget="statusbar"-->
+                        <header> <!--penempatan statusbar berada pada header form options="{'clickable':'1'}"-->
+                            <button string="In Consultation" states="draft" name="action_in_consultation" type="object" class="oe_highlight"/>
+                            <button string="Mark as Done" states="in_consultation" name="action_done" type="object" class="oe_highlight"/>
+                            <button string="Cancel" states="draft,in_consultation" name="action_cancel" type="object"/>
+                            <button string="Revert to Draft" states="cancel" name="action_draft" type="object"/>
+                            <field name="state" widget="statusbar" nolabel="1"  
+                            statusbar_visible="draft, in_consultation, done"/> <!--penggunaan statusbar menggunakan widget="statusbar"-->
                             <!--value clickable agar statusbar dapat diklik scr manual -->
                             <!--statusbar_visible agar menampilkan value selection state mana yang akan dimunculkan-->
                         </header>

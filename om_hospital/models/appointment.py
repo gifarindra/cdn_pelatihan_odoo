@@ -17,7 +17,7 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
                        selection=[('0', 'Normal'), ('1', 'Low'),('2','High'),('3','Very High')]) #penambahan widget priority lewat views
     state            = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('in_consultation', 'In Consultation'),
                        ('done', 'Done'), ('cancel', 'Cancelled')], default="draft", required=True) #state merupakan spesial keyword untuk menambahkan status pada suatu record, required berguna agar tidak ada record dengan state = 0
-    doctor_id = fields.Many2one(comodel_name='res.users', string='Doctor') #Field many2one dengan model res.users(base model dari odoo(rumit))
+    doctor_id = fields.Many2one(comodel_name='res.users', string='Doctor', tracking=True) #Field many2one dengan model res.users(base model dari odoo(rumit))
     
     
     #api onchange berubah saat terjadi saving record berbeda dengan depends
@@ -35,6 +35,18 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
             }
         }
     
+    def action_in_consultation(self):
+        for rec in self:
+            rec.state = 'in_consultation'
+    def action_done(self):
+        for rec in self:
+            rec.state = 'done'
+    def action_cancel(self):
+        for rec in self:
+            rec.state = 'cancel'
+    def action_draft(self):
+        for rec in self:
+            rec.state = 'draft'
     #penggunaan atr default cukup berguna untuk beberapa field, pahami kapan dan dimana penggunaannya!
     
     
