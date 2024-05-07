@@ -7,11 +7,14 @@
             <field name="name">hospital.appointment.view.tree</field>
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
-                <tree decoration-success="state == 'done'" decoration-info="state == 'draft'" decoration-danger="state == 'cancel'" decoration-warning="state == 'in_consultation'"> <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt -->
+                <tree decoration-success="state == 'done'"  decoration-danger="state == 'cancel'" > <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt -->
                     <!-- Add your fields here -->
                     <field name="patient_id" />
+                    <field name="ref" optional="show"/> <!--penggunaan atribut optional menjadikan tree view memiliki dynamic field yang dapat dimunculkan atau disembunyikan scr manual oleh user-->
+                    <field name="gender" optional="hide"/>
                     <field name="appointment_time" />
-                    <field name="booking_date" />
+                    <field name="booking_date" optional="show"/>
+                    <field name="activity_ids" widget="list_activity"/> <!--menampilkan field dari mail.thread dengan inheritance-->
                     <field name="state" decoration-success="state == 'done'" 
                            decoration-info="state == 'draft'"
                            decoration-danger="state == 'cancel'"
@@ -68,7 +71,7 @@
                         </notebook>
                     </sheet>
                 <div class="oe_chatter"> <!--chatter uuntuk tracking-->
-                    <field name="message_follower_ids"/> 
+                    <field name="message_follower_ids"/>  <!--field di dalam chatter merupakan field yang didefinisikan pada addon mail-->
                     <field name="activity_ids"/>
                     <field name="message_ids"/>
                 </div>
