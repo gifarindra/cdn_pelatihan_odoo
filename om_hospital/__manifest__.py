@@ -22,7 +22,7 @@
     'version': '16.0.1',
 
     # any module necessary for this one to work correctly (module(s) dependance of this current module)
-    'depends': ['base','mail',],    
+    'depends': ['base','mail','product'],    
 
     # always loaded
     'data': [
