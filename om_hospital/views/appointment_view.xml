@@ -73,7 +73,7 @@
                             </page>
                             <page string="Pharmacy" name="pharmacy">
                                 <field name="pharmacy_lines_ids">
-                                    <tree editable="bottom">
+                                    <tree editable="top"> <!--value bottom akan membuat record baru yg akan ditambah berada di posisi paling bawah list, top mjd paling atas, jk tdk ada atr editable maka form view akan terbuka-->
                                         <field name="product_id"/>
                                         <field name="price_unit"/>
                                         <field name="qty"/>
