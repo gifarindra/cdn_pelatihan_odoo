@@ -12,7 +12,7 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     appointment_time = fields.Datetime(string='Appointment Time', default=fields.Datetime.now)
     booking_date     = fields.Date(string='Booking Date',default=fields.Datetime.now) #format tanggal dapat diubah di settings, languages, en_US, dateformat
     ref              = fields.Char(string='Reference', help="Reference of the patient from the patient record.") #bisa diubah mjd readonly false #field python bisa diberi atr help sebagai penjelasan dari sebuah field
-    prescription     = fields.Html(string='Prescription', options="{'collaborative': True}")
+    prescription     = fields.Html(string='Prescription')
     priority         = fields.Selection(string='Priority', 
                        selection=[('0', 'Normal'), ('1', 'Low'),('2','High'),('3','Very High')]) #penambahan widget priority lewat views
     state            = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('in_consultation', 'In Consultation'),

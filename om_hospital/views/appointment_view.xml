@@ -7,7 +7,7 @@
             <field name="name">hospital.appointment.view.tree</field>
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
-                <tree decoration-success="state == 'done'"  decoration-danger="state == 'cancel'" > <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt -->
+                <tree decoration-success="state == 'done'"  decoration-danger="state == 'cancel'" sample="1"> <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt -->
                     <!-- Add your fields here -->
                     <field name="patient_id" />
                     <field name="ref" optional="hide"/> <!--penggunaan atribut optional menjadikan tree view memiliki dynamic field yang dapat dimunculkan atau disembunyikan scr manual oleh user-->
@@ -45,14 +45,14 @@
                         <group>
                             <!-- Add your fields here -->
                             <group >
-                                <field name="patient_id" />
+                                <field name="patient_id" default_focus="1"/>
                                 <field name="ref" />
                                 <field name="gender" />
                                 <field name="doctor_id" widget="many2one_avatar_user"/> <!--widget idem dengan tree view-->
-                                <field name="booking_date" help="Date of booking"/>
+                                <field name="booking_date" default_focus="1" help="Date of booking"/> <!--default_focus untuk membuat kursor diarahkan ke field ini terlebih dahulu saat akan melakukan perubahan-->
                             </group>
                             <group>
-                                <field name="appointment_time" />
+                                <field name="appointment_time"  default_focus="1"/> <!--jk terdapat >1 default_focus, maka .....-->
                                 <button string="Object Button" name="action_test" type="object" class="oe_highlight" 
                                 confirm="Do you want to execute the python code?" help="On clicking this button, you will execute a certain python code."/> <!--button dengan tipe object akan mencari function sesuai dgn atr name di modelnya class dgn highlight untuk memberi warna-->
                                 <button string="Action Button" name="%(hospital_patient_action)d" type="action" class="oe_highlight" 
@@ -63,7 +63,7 @@
                         <notebook> <!--notebook dengan 2 pages-->
                             <page string="Prescription" name="prescription"> <!--untuk memunculkan label tambahkan group-->
                                 
-                                <field name="prescription" placeholder="Enter your prescription!"/> <!--placeholder agar memiliki nama-->
+                                <field name="prescription" placeholder="Enter your prescription!" options ="{'collaborative': true, 'resizable': true}"/> <!--placeholder agar memiliki nama, menjadikan fielf html bersifat kolaboratif dgn user lain dan dpt diubah ukurannya-->
                                 
                             </page>
                             <page string="Pharmacy" name="pharmacy">
