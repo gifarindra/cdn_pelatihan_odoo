@@ -22,20 +22,22 @@
             <field name="name">hospital.patient.view.form</field>
             <field name="model">hospital.patient</field>
             <field name="arch" type="xml">
-                <form string="">
+                <form>
                     <sheet>
+                        <field name="image" widget="image" class="oe_avatar"/> <!--menampilkan field image dengan widget image agar gambar yg diunggah muncul, class="oe_avatar" agar dapat mendapat css dgn oe_avatar-->
                         <group> <!--this group tag makes the fields below have their labels-->
                             <group>
                                 <!-- Add your fields here -->
                                 <field name="name" />
                                 <field name="date_of_birth" />
                                 <field name="age" />
+                                <field name="appointment_id" />
                             </group>
                             <group >
                                 <!-- Add your fields here -->
                                 <field name="ref" />
                                 <field name="gender" />
-                                <field name="active" invisible = "True"/> <!--add the archive feature inside the form view-->
+                                <field name="active" invisible = "1"/> <!--add the archive feature inside the form view-->
                             </group>
                         </group>
                     </sheet>

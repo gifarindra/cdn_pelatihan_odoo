@@ -3,18 +3,18 @@ from datetime import date
 
 
 class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
-    _name        = 'hospital.patient' #all lowercase with . for the space
-    _description = 'Hospital Patient'
-    _inherit     = ['mail.thread', 'mail.activity.mixin'] #inherit chatter dari mail
+    _name          = 'hospital.patient' #all lowercase with . for the space
+    _description   = 'Hospital Patient'
+    _inherit       = ['mail.thread', 'mail.activity.mixin'] #inherit chatter dari mail
 
-    name   = fields.Char(string='Name', tracking=True)   #fields ofc  #tracking the field with the chatter field dgn nama "name" merupakan special syntax untuk memunculkan nama sbg name field
-    date_of_birth = fields.Date(string='Date of Birth') #sumber computed field age
-    ref    = fields.Char(string='Reference', tracking=True)
-    age    = fields.Integer(string='Age', tracking=True, compute='_compute_age') #ofint #computed fields
-    gender = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),], tracking=True, default='male') #ofsel
-    active = fields.Boolean(string='Active', default=True, tracking=True) #add the archive feature on the form view 
-    #appointment_id = fields.Many2one(comodel_name='hospital.appointment', string='Appointments')
-    
+    name           = fields.Char(string='Name', tracking=True)   #fields ofc  #tracking the field with the chatter field dgn nama "name" merupakan special syntax untuk memunculkan nama sbg name field
+    date_of_birth  = fields.Date(string='Date of Birth') #sumber computed field age
+    ref            = fields.Char(string='Reference', tracking=True)
+    age            = fields.Integer(string='Age', tracking=True, compute='_compute_age') #ofint #computed fields
+    gender         = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),], tracking=True, default='male') #ofsel
+    active         = fields.Boolean(string='Active', default=True, tracking=True) #add the archive feature on the form view 
+    appointment_id = fields.Many2one(comodel_name='hospital.appointment', string='Appointments')
+    image          = fields.Image(string='Image')
     
     #computed fields merupakan readonly field yang memiliki depedensi thd field lain (BUKAN RELATED FIELD) dan tidak menerima input scr manual
     #computed field dieksekusi setelah ada action save tanpa api depends
