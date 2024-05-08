@@ -30,6 +30,7 @@
                             </group>
                             <group >
                                 <field name="color"  widget="color_picker"/> <!--color_picker mengubah field integer biasa menjadi tampilan color picker dengan pilihan warna dasar untuk field tsb-->
+                                <field name="color_2" widget="color" groups="base.group_no_one"/> <!--pilihan color dengan widget color lebih bervariasi karena nilai RGB bisa diatur sendiri yang akan disimpan dalam field char dalam kode warna yg dipilih-->
                                 <field name="active" widget="boolean_toggle" /> <!--mengganti tampilan dari checkmark menjadi toggle switch-->
                             </group>
                         </group>
