@@ -57,6 +57,7 @@
                                 <field name="booking_date" default_focus="1" help="Date of booking"/> <!--default_focus untuk membuat kursor diarahkan ke field ini terlebih dahulu saat akan melakukan perubahan-->
                             </group>
                             <group>
+                                <field name="hide_sales_price" />
                                 <field name="appointment_time"  default_focus="1"/> <!--jk terdapat >1 default_focus, maka .....-->
                                 <button string="Object Button" name="action_test" type="object" class="oe_highlight" 
                                 confirm="Do you want to execute the python code?" help="On clicking this button, you will execute a certain python code."/> <!--button dengan tipe object akan mencari function sesuai dgn atr name di modelnya class dgn highlight untuk memberi warna-->
@@ -75,13 +76,13 @@
                                 <field name="pharmacy_lines_ids">
                                     <tree editable="top"> <!--value bottom akan membuat record baru yg akan ditambah berada di posisi paling bawah list, top mjd paling atas, jk tdk ada atr editable maka form view akan terbuka-->
                                         <field name="product_id"/>
-                                        <field name="price_unit"/>
+                                        <field name="price_unit" attrs="{'column_invisible':[('parent.hide_sales_price','=',True)]}"/>
                                         <field name="qty"/>
                                     </tree>
                                     <form>
                                         <group>
                                             <field name="product_id"/>
-                                            <field name="price_unit"/>
+                                            <field name="price_unit" attrs="{'column_invisible':[('parent.hide_sales_price','=',True)]}"/> <!--jk memanggil sebuah field sebagai value dictionary dari field one2many, perlu ada penambahan syntax parent.nama_field agar tdk tjd error. Ini dikarenakan field yg melakukan pemanggilan berada pada model yang berbeda.-->
                                             <field name="qty"/>
                                         </group>
                                     </form>
@@ -90,7 +91,7 @@
                         </notebook>
                     </sheet>
                 <div class="oe_chatter"> <!--chatter uuntuk tracking-->
-                    <field name="message_follower_ids"/>  <!--field di dalam chatter merupakan field yang didefinisikan pada addon mail-->
+                    <field name="message_follower_ids" groups="base.group_user"/>  <!--field di dalam chatter merupakan field yang didefinisikan pada addon mail-->
                     <field name="activity_ids"/>
                     <field name="message_ids"/>
                 </div>

@@ -19,6 +19,7 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     doctor_id          = fields.Many2one(comodel_name='res.users', string='Doctor', tracking=True) #Field many2one dengan model res.users(base model dari odoo(rumit))
     pharmacy_lines_ids = fields.One2many(comodel_name='appointment.pharmacy.lines', 
                                         inverse_name='appointment_id', string='Pharmacy Lines') #pembuatan one2many, onenya adalah appointment_id dan many adalah record-record dari sebuah field yang akan diasosiasikan dgn appointment_id (product.product)
+    hide_sales_price   = fields.Boolean(string='Hide Sales Price')
     
     
     
