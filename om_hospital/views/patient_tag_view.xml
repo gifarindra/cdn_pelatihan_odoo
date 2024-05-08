@@ -10,6 +10,7 @@
                 <tree>
                     <!-- Add your fields here -->
                     <field name="name" />
+                    <field name="color"  widget="color_picker"/>
                     <field name="active" />
                 </tree>
             </field>
@@ -28,6 +29,7 @@
                                 <field name="name" />
                             </group>
                             <group >
+                                <field name="color"  widget="color_picker"/> <!--color_picker mengubah field integer biasa menjadi tampilan color picker dengan pilihan warna dasar untuk field tsb-->
                                 <field name="active" widget="boolean_toggle" /> <!--mengganti tampilan dari checkmark menjadi toggle switch-->
                             </group>
                         </group>
