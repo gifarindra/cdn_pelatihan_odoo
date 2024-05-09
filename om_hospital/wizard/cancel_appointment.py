@@ -6,6 +6,8 @@ class CancelAppointmentWizard(models.TransientModel): #transient model dibutuhka
     _description = 'Cancel Appointment Wizard'
 
     appointment_id = fields.Many2one(comodel_name='hospital.appointment', string='Appointment')
+    reason = fields.Text(string='Cancellation Reason') #field text mempunyai bidang yang lebih luas dan dapat diubah ukuran dimensinya shg lbh cocok apabila mempunyai informasi yang banyak
+    
     
     def action_cancel(self):
         return
