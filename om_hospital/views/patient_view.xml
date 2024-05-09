@@ -37,6 +37,7 @@
                                 <!-- Add your fields here -->
                                 <field name="ref" />
                                 <field name="gender" />
+                                <field name="color_2" />
                                 <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/> <!--menambahkan opsi colorfield untuk widget m2m_tags dengan field dari model yang berbeda(?)-->
                                 <field name="active" invisible = "1"/> <!--add the archive feature inside the form view-->
                             </group>
@@ -50,6 +51,7 @@
                 </form>
             </field>
         </record>
+
 
         
         <!-- hospital.patient search view osearch-->

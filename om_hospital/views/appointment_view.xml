@@ -2,6 +2,25 @@
 <odoo>
     <data>
 
+        <record id="hospital_appointment_view_activity" model="ir.ui.view"> <!--penambahan activity view bergantung pada addon mail -->
+            <field name="name">hospital.appointment.view.activity</field> <!--activity view ditempatkan sebelum tree view-->
+            <field name="model">hospital.appointment</field> <!--field yang akan ditampilkan sbg activity berdasar field default activity odoo-->
+            <field name="arch" type="xml">
+                <activity string="Appointments">
+                <field name="patient_id" /> <!--field penting untuk dipanggil krn digunakan oleh tag img-->
+                <field name="ref" />
+                    <templates>
+                        <div t-name="activity-box">
+                            <img t-att-src="activity_image('hospital.patient', 'image',record.patient_id.raw_value)" t-att-title="record.patient_id.value" t-att-alt="record.patient_id.value"/>
+                            <div>
+                                <field name="ref"  display="full"/> <!--Field ini akan ditampilkan di sebelah image -->
+                            </div>
+                        </div>
+                    </templates>
+                </activity>
+            </field>
+        </record>
+
         <!-- hospital.appointment tree view -->
         <record id="hospital_appointment_view_tree" model="ir.ui.view">
             <field name="name">hospital.appointment.view.tree</field>
@@ -117,7 +136,7 @@
             <field name="name">Hospital Appointments</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">hospital.appointment</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,activity</field>
             <field name="context">{}</field> 
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
