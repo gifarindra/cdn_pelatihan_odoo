@@ -15,7 +15,7 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     active         = fields.Boolean(string='Active', default=True, tracking=True) #add the archive feature on the form view 
     appointment_id = fields.Many2one(comodel_name='hospital.appointment', string='Appointments')
     image          = fields.Image(string='Image')
-    tag_ids = fields.Many2many(comodel_name='patient.tag', string='Patient Tags') #penjelasan lengkap mengenai mekanisme many2many bisa dilihat di odoomates 15 tutorial vid 57
+    tag_ids        = fields.Many2many(comodel_name='patient.tag', string='Patient Tags') #penjelasan lengkap mengenai mekanisme many2many bisa dilihat di odoomates 15 tutorial vid 57
     
     
     #computed fields merupakan readonly field yang memiliki depedensi thd field lain (BUKAN RELATED FIELD) dan tidak menerima input scr manual
