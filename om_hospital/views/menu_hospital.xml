@@ -11,6 +11,9 @@
 
         <!-- This Menu Item Must have a parent -->
         <menuitem id="hospital_menu_configurations_categ" name="Configurations" parent="hospital_menu_root" sequence="30"/>
+
+        <menuitem id="hospital_menu_cancel_appointment_categ" name="Appointment Cancellation" parent="hospital_menu_appointments_categ" 
+        action="cancel_appointment_action" sequence="50"/>
     </data>
     
 </odoo>

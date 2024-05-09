@@ -28,6 +28,7 @@
     'data': [
         #'security/groups.xml',
         'security/ir.model.access.csv',
+        'wizard/cancel_appointment_view.xml', #penempatan wizard sebelum views dan sesudah security merupakan common practice dari dir wizard
         'views/views.xml',
         'views/templates.xml',
         'views/menu_hospital.xml',
@@ -35,6 +36,7 @@
         'views/female_patient_view.xml',
         'views/appointment_view.xml',
         'views/patient_tag_view.xml',
+        
     ], #needed xmls
     # only loaded in demonstration mode
     'demo': [

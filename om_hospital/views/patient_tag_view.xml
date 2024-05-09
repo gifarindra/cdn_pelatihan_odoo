@@ -41,7 +41,7 @@
 
         <!-- patient.tag action window -->
         <record id="patient_tag_action" model="ir.actions.act_window">
-            <field name="name">patient.tag.action</field>
+            <field name="name">Patient Tag</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">patient.tag</field>
             <field name="view_mode">tree,form</field>
