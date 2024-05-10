@@ -41,17 +41,19 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     def action_in_consultation(self):
         for rec in self:
             rec.state = 'in_consultation'
+            
     def action_done(self):
         for rec in self:
             rec.state = 'done'
+            
     def action_cancel(self):
-        for rec in self:
-            rec.state = 'cancel'
+        action = self.env.ref('om_hospital.cancel_appointment_wizard_action').read()[0]
+        return action
+        
     def action_draft(self):
         for rec in self:
             rec.state = 'draft'
     #penggunaan atr default cukup berguna untuk beberapa field, pahami kapan dan dimana penggunaannya!
-
 
 
 class AppointmentPharmacyLines(models.Model):

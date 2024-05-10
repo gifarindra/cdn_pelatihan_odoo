@@ -26,7 +26,7 @@
         </record>
 
         <!-- patient.tag action window -->
-        <record id="cancel_appointment_action" model="ir.actions.act_window"> <!--action window untuk menu category dari transient model cancel_appointment-->
+        <record id="cancel_appointment_wizard_action" model="ir.actions.act_window"> <!--action window untuk menu category dari transient model cancel_appointment-->
             <field name="name">Cancel Appointment</field> <!--hapus semua field yang berkenaan dengan list view krn skrg hanya membutuhkan form view-->
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">cancel.appointment.wizard</field>
