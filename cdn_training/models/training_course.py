@@ -9,7 +9,8 @@ class TrainingCourse(models.Model):
     description = fields.Text(string='keterangan')
     user_id = fields.Many2one(comodel_name='res.users', string='Penanggung Jawab')
     session_line = fields.One2many(comodel_name='training.session', inverse_name='course_id', string='Session') 
-
+    product_ids = fields.Many2many(comodel_name='product.product', string='Peralatan/Konsumsi', domain=[('product_training','!=', 'non_training')])
+    
     _sql_constraints = [
         ("name_course_unique", "Unique(name)", "Nama kursus sudah ada!"),
     ]
@@ -34,6 +35,8 @@ class TrainingSession(models.Model):
     jml_peserta = fields.Integer(compute='_compute_jml_peserta', string='Jumlah Peserta', tracking=True)
     state = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('progress', 'Sedang Berlangsung'),('done','Selesai')], default="draft", tracking=True)
     end_date = fields.Date(string='End Date', compute="_compute_end_date", tracking=True)
+    
+    
     
     
     

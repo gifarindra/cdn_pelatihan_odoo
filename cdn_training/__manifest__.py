@@ -19,7 +19,7 @@
     'version': '16.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','mail',],
+    'depends': ['base','mail','product','purchase','l10n_id_efaktur'],
 
     # always loaded
     'data': [
@@ -39,10 +39,14 @@
         'views/desa.xml',
         'views/peserta.xml',
         'views/jabatan.xml',
+        'views/product_inherit.xml',
+        'views/purchase_inherit.xml',
+        'views/res_partner_inherit.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
     'application':True,
+    'license': 'LGPL-3',
 }

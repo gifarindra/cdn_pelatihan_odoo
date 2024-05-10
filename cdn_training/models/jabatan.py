@@ -18,7 +18,7 @@ class Jabatan(models.Model):
                 existing_kepala = self.search([('jenis_jabatan','=','kepala')])
                 if len(existing_kepala) > 1 or (len(existing_kepala) == 1 and existing_kepala.id != record.id):
                     raise ValidationError ("Hanya boleh ada satu Kepala / Pimpinan Lembaga")
-            elif recod.jenis_jabatan == 'wakil':
+            elif record.jenis_jabatan == 'wakil':
                 existing_wakil = self.search([('jenis_jabatan','=','wakil')])
                 if len(existing_wakil) > 1 or (len(existing_wakil) == 1 and existing_wakil.id != record.id):
                     raise ValidationError ("Hanya boleh ada satu Wakil Lembaga")

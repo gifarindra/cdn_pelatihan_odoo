@@ -36,7 +36,7 @@
                         <widget name="web_ribbon" text="Selesai" bg_color="bg-info" attrs="{'invisible':[('state','!=','done')]}" />
                         <group>
                             <!-- Add your fields here -->
-                            <field name="name" attrs="{'readonly':[('state','=','done')]}"/>
+                            <field name="name" attrs="{'readonly':[('state','=','done')]}"/> <!--syntax value dari dictionary ini tdk perlu menggunakan parent krn tdk ada pemanggilan dari field o2m dan posisi field berada di model yang sama-->
                             <field name="course_id" attrs="{'readonly':[('state','=','done')]}"/>
                             <field name="start_date" attrs="{'readonly':[('state','=','done')]}"/>
                             <field name="duration" attrs="{'readonly':[('state','=','done')]}"/>

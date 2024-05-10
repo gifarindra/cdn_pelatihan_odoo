@@ -10,5 +10,3 @@ class ResPartner(models.Model): #omod
     kota_id = fields.Many2one('ref.kota', string='Kota')
     kecamatan_id = fields.Many2one('ref.kecamatan', string='Kecamatan')
     desa_id = fields.Many2one('ref.desa', string='Desa/Kelurahan')
-
-
