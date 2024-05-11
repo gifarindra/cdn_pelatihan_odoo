@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <!-- sale.order inherit form view -->
+        <record id="sale_order_inherited_confirmed_user_view" model="ir.ui.view">
+            <field name="name">sale.order.inherited.confirmed.user.view.form</field>
+            <field name="model">sale.order</field> <!--namamodel yang diinherit-->
+            <field name="inherit_id" ref="sale.view_order_form"/> <!--ref ditujukan untuk view form yang akan ditambahkan field, value dr ref dilihat pada edit view form yang akan diinherit, apabila ada error parent view, maka view telah diinherit sebelumnya(cari lokasi eksternal id dari field tambahan)-->
+            <field name="arch" type="xml">
+                <!-- Add your xpath here -->
+                <xpath expr="//field[@name='payment_term_id']" position="after"> <!--jika ada parent view error, bisa dicari di inherited view atau ditambahi field priority-->
+                    <field name="confirmed_user_id" /> <!--penambahan field m2o baru setelah field payment_term_id pada model sale.order-->
+                </xpath> <!--xpath expr="//field[@name='']" position="inside" sintaks untuk field, jk untuk group field->groups, pos after untuk menambah field setelah field dgn nama tsb -->
+            </field>
+        </record>
+    
+    </data>
+    
+
+</odoo>
