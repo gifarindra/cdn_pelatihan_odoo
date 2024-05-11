@@ -28,6 +28,7 @@
         'views/views.xml',
         'data/sequence_data.xml',
         'wizards/training_wizard.xml',
+        'wizards/input_jabatan.xml',
         'views/templates.xml',
         'views/menu_training.xml',
         'views/training_session.xml',

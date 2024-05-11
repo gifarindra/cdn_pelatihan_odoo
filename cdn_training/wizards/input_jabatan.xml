@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+
+        <!-- input.jabatan.wizad form view -->
+        <record id="input_jabatan_wizard_view_form" model="ir.ui.view">
+            <field name="name">input.jabatan.wizard.view.form</field>
+            <field name="model">input.jabatan.wizard</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="pejabat_id"/>
+                            <field name="jabatan_id"/>
+                        </group>
+                        <footer>
+                            <button name="action_update_jabatan" string = "Tambah Pejabat" type="object" class="btn-primary" confirm="Apakah Anda yakin ?"/>
+                            <button string = "Batal" type="object" class="button-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="input_jabatan_wizard_action" model="ir.actions.act_window">
+            <field name="name">Input Jabatan</field>
+            <field name="res_model">input.jabatan.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="input_jabatan_wizard_view_form"/>
+            <field name="target">new</field>
+        </record>
+    
+    </data>
+    
+</odoo>
