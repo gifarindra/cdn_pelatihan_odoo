@@ -54,7 +54,7 @@
                         <header> <!--penempatan statusbar berada pada header form options="{'clickable':'1'}"-->
                             <button string="In Consultation" states="draft" name="action_in_consultation" type="object" class="oe_highlight" data-hotkey="i"/> <!--button bertipe object memanggil function action_in_consultation pd model yang akan hanya muncul pada saat state = draft-->
                             <button string="Mark as Done" states="in_consultation" name="action_done" type="object" class="oe_highlight" data-hotkey="v"/>
-                            <button string="Cancel" states="draft,in_consultation" name="action_cancel" type="object" data-hotkey="z"/>
+                            <button string="Cancel" states="draft,in_consultation" name="action_cancel" type="object" data-hotkey="z"/> <!--pemanggilan dgn object button dengan ORM method untuk memanggil action windows model lain juga dapat dilakukan tanpasintaks khusus action button-->
                             <button string="Revert to Draft" states="cancel" name="action_draft" type="object" data-hotkey="n"/> <!--data-hotkey untuk memunculkan hotkey pada button yang tidak mendapatkan default hotkey-->
                             <field name="state" widget="statusbar" nolabel="1"   
                             statusbar_visible="draft, in_consultation, done"/> <!--penggunaan statusbar menggunakan widget="statusbar"-->
@@ -83,7 +83,7 @@
                                 groups="base.group_no_one"/> <!--button dengan tipe object akan mencari function sesuai dgn atr name di modelnya class dgn highlight untuk memberi warna, group_no_one menjadikan field tidak akan tampil tanpa dev mode-->
                                 <button string="Action Button" name="%(hospital_patient_action)d" type="action" class="oe_highlight" 
                                 confirm="Are you sure to proceed?" help="On clicking this button, you will be redirected to patient records." 
-                                groups="base.group_no_one"/> <!--button dengan tipe action akan mencari window action dengan hasil spt saat kita mengklik menu action dari window action tsb, confirm = confirmation popup, help berfungsi untuk memunculkan tampilan popup yang berguna untuk mengartikan suatu field tanpa debug mode-->
+                                groups="base.group_no_one"/> <!--button dengan tipe action akan mencari window action dengan hasil spt saat kita mengklik menu action dari window action tsb, confirm = confirmation popup, help berfungsi untuk memunculkan tampilan popup yang berguna untuk mengartikan suatu field tanpa debug mode, pemanggilan action windows model lain dgn sintaks spt pada atr name dapat dilakukan tanpa ORM Method-->
                             
                             </group>
                         </group>

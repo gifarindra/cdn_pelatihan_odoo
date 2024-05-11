@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+    <record id="patient_tag_vip" model="patient.tag"> <!--untuk memuat data ke model patient.tag-->
+        <field name="name">VIP</field> <!--pembuatan record VIP dalam model patient.tag -->
+    </record>
+
+    <record id="patient_tag_kid" model="patient.tag">
+        <field name="name">Kid</field> <!--record Kid-->
+    </record>
+
+    <record id="patient_tag_adult" model="patient.tag">
+        <field name="name">Adult</field>
+    </record>
+
+    <record id="patient_tag_mr" model="patient.tag">
+        <field name="name">Mister</field>
+        <field name="active" eval="False" /> <!--atr eval membuat value dari field boolean active mjd False dan diarsipkan oleh odoo-->
+    </record>
+    
+</odoo>

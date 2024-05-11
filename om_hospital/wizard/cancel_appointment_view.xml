@@ -17,8 +17,8 @@
                         <group >
                         </group>
                     </group>
-                    <footer>
-                        <button string="Cancel Appointment" name="action_cancel" type="object" class="btn-primary" data-hotkey="q"/> <!--btn_primary membuat button terhighlight-->
+                    <footer> <!--tag ini untuk mengcustomize bagian footer dari popup (biasanya button)-->
+                        <button string="Cancel Appointment" name="action_cancel" type="object" class="btn-primary" data-hotkey="q"/> <!--btn_primary membuat button terhighlight, panggil funct action_cancel dengan tipe object-->
                         <button special="cancel" data-hotkey="z" string="Discard" class="btn-secondary"/>
                     </footer>
                 </form>

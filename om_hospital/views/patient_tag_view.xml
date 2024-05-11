@@ -58,7 +58,7 @@
         </record>
 
         <!-- This Menu Item must have a parent and an action -->
-        <menuitem id="patient_tag_menu_act" name="Patient Tag" parent="hospital_menu_configurations_categ" action="patient_tag_action" sequence="10"/>
+        <menuitem id="patient_tag_menu_act" name="Patient Tags" parent="hospital_menu_configurations_categ" action="patient_tag_action" sequence="10"/>
     
     </data>
     
