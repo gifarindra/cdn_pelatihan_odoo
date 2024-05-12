@@ -1,5 +1,6 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _ #_ perlu diimport saat melakukan validation error
 from datetime import date
+from odoo.exceptions import ValidationError #jangan lupa impor _
 
 
 class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
@@ -16,6 +17,12 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     appointment_id = fields.Many2one(comodel_name='hospital.appointment', string='Appointments')
     image          = fields.Image(string='Image')
     tag_ids        = fields.Many2many(comodel_name='patient.tag', string='Patient Tags') #penjelasan lengkap mengenai mekanisme many2many bisa dilihat di odoomates 15 tutorial vid 57
+    
+    @api.constrains('date_of_birth') #dekorator constraint menggunakan api.constrains, constraint akan mengecek field
+    def _check_date_of_birth(self): #function yang dipanggil untuk selalu mengecek field
+        for rec in self:
+            if rec.date_of_birth and rec.date_of_birth > fields.Date.today(): #jika dob melebihi tanggal sekarang maka Validation Error muncul
+                raise ValidationError (_('The value of date of birth is not valid!'))
     
     @api.model #perlu diberikan dekorator saat menginherit method (hanya create method saja??) dari model
     def create(self, vals): #ocreate snippet, untuk menginherit create method dari Models, ooverride snippet untuk override create method
