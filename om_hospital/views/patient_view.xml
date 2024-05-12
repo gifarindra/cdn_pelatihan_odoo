@@ -7,7 +7,7 @@
             <field name="name">hospital.patient.view.tree</field>
             <field name="model">hospital.patient</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree export_xlsx="0"> <!--menonaktifkan opsi export/download record pada tree view-->
                     <!-- Add your fields here -->
                     <field name="name" string="Patient Name" />
                     <field name="ref" />
