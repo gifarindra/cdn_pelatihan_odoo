@@ -13,7 +13,8 @@
         <menuitem id="hospital_menu_configurations_categ" name="Configurations" parent="hospital_menu_root" sequence="30"/>
 
         <menuitem id="hospital_menu_cancel_appointment_action" name="Appointment Cancellation" parent="hospital_menu_appointments_categ" 
-        action="cancel_appointment_wizard_action" sequence="50"/> <!--atribut action diberikan agar menu category dapat memanggil action wizard-->
+        action="cancel_appointment_wizard_action" sequence="50"/> 
+
     </data>
     
 </odoo>

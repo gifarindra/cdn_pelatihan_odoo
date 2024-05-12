@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    
+        <!-- odoo.playground form view -->
+        <record id="odoo_playground_view_form" model="ir.ui.view">
+            <field name="name">odoo.playground.view.form</field>
+            <field name="model">odoo.playground</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <group>
+                        <!-- Add your fields here -->
+                        <field name="model_id" />
+                        <field name="code" widget="ace" options="{'mode':'python'}"/>
+                    </group>
+                    <group>
+                        <button string="Execute" name="action_execute" type="object" class="btn_primary" data-hotkey="q"/>
+                    </group>
+                    <group>
+                        <field name="result" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- odoo.playground action window -->
+        <record id="odoo_playground_action" model="ir.actions.act_window">
+            <field name="name">Play Ground</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">odoo.playground</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="technical_menu_categ" name="Technical" sequence="50" >
+            <menuitem id="odoo_playground_menu_act1" name="Play Ground1" sequence="10"> <!--pembuatan menu action tanpa parent yang ditempatkan di dalam menuitem category-->
+                <menuitem id="odoo_playground_menu_act2" name="Play Ground2" action="odoo_playground_action" sequence="10"/>
+            </menuitem>
+        </menuitem> <!--pembuatan main menu dengan menuitem bertingkat (tanpa atr parent)-->
+        
+    </data>
+    
+</odoo>
