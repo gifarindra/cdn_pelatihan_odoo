@@ -18,7 +18,7 @@ class CancelAppointmentWizard(models.TransientModel): #transient model dibutuhka
         #variabel fields berisi list field2 yang telah didefinisi, variable res merupakan dictionary dari field yang telah diberi default value
         
 
-    appointment_id = fields.Many2one(comodel_name='hospital.appointment', string='Appointment') #, domain=[('state','=','draft'),('priority','in',('0','1', False))], filtering menggunakan atr domain dpt dilakukan pada sisi py atau xml, domain filter mempunyai sintaks list-tuple, '|' sebelum tuple pertama menandakan operasi or diberlakukan untuk domain
+    appointment_id = fields.Many2one(comodel_name='hospital.appointment', string='Appointment', domain=[('state','=','draft'),('priority','in',('0','1', False))]) #filtering menggunakan atr domain dpt dilakukan pada sisi py atau xml, domain filter mempunyai sintaks list-tuple, '|' sebelum tuple pertama menandakan operasi or diberlakukan untuk domain
     reason = fields.Text(string='Cancellation Reason') #field text mempunyai bidang yang lebih luas dan dapat diubah ukuran dimensinya shg lbh cocok apabila mempunyai informasi yang banyak
     date_cancel = fields.Date(string='Cancellation Date')
     

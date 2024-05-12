@@ -27,6 +27,7 @@
                             <!-- Add your fields here -->
                             <group >
                                 <field name="name" />
+                                <field name="sequence" />
                             </group>
                             <group >
                                 <field name="color"  widget="color_picker"/> <!--color_picker mengubah field integer biasa menjadi tampilan color picker dengan pilihan warna dasar untuk field tsb-->
