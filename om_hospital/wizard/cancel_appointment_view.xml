@@ -11,7 +11,7 @@
                     <group>
                         <!-- Add your fields here -->
                         <group >
-                            <field name="appointment_id" invisible="context.get('hide_appointment')"/> <!--pengambilan value dari context hide_appointment jika true maka invisible = true, jika tdk ada context maka false-->
+                            <field name="appointment_id" invisible="context.get('hide_appointment')" domain="[('state','=','draft')]"/> <!--pengambilan value dari context hide_appointment jika true maka invisible = true, jika tdk ada context maka false, pemberian domain untuk filtering list-tuple -->
                             <field name="reason" />
                         </group>
                         <group>
