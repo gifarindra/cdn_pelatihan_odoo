@@ -4,19 +4,28 @@ from odoo.exceptions import ValidationError #jangan lupa impor _
 
 
 class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
-    _name          = 'hospital.patient' #all lowercase with . for the space
-    _description   = 'Hospital Patient'
-    _inherit       = ['mail.thread', 'mail.activity.mixin'] #inherit chatter dari mail
+    _name             = 'hospital.patient' #all lowercase with . for the space
+    _description      = 'Hospital Patient'
+    _inherit          = ['mail.thread', 'mail.activity.mixin'] #inherit chatter dari mail
 
-    name           = fields.Char(string='Name', tracking=True)   #fields ofc  #tracking the field with the chatter field dgn nama "name" merupakan special syntax untuk memunculkan nama sbg name field
-    date_of_birth  = fields.Date(string='Date of Birth') #sumber computed field age
-    ref            = fields.Char(string='Reference', tracking=True)
-    age            = fields.Integer(string='Age', tracking=True, compute='_compute_age') #ofint #computed fields
-    gender         = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),], tracking=True, default='male') #ofsel
-    active         = fields.Boolean(string='Active', default=True, tracking=True) #add the archive feature on the form view 
-    appointment_id = fields.Many2one(comodel_name='hospital.appointment', string='Appointments')
-    image          = fields.Image(string='Image')
-    tag_ids        = fields.Many2many(comodel_name='patient.tag', string='Patient Tags') #penjelasan lengkap mengenai mekanisme many2many bisa dilihat di odoomates 15 tutorial vid 57
+    name              = fields.Char(string='Name', tracking=True)   #fields ofc  #tracking the field with the chatter field dgn nama "name" merupakan special syntax untuk memunculkan nama sbg name field
+    date_of_birth     = fields.Date(string='Date of Birth') #sumber computed field age
+    ref               = fields.Char(string='Reference', tracking=True)
+    age               = fields.Integer(string='Age', tracking=True, compute='_compute_age') #ofint #computed fields
+    gender            = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),], tracking=True, default='male') #ofsel
+    active            = fields.Boolean(string='Active', default=True, tracking=True) #add the archive feature on the form view 
+    appointment_id    = fields.Many2one(comodel_name='hospital.appointment', string='Appointments')
+    image             = fields.Image(string='Image')
+    tag_ids           = fields.Many2many(comodel_name='patient.tag', string='Patient Tags') #penjelasan lengkap mengenai mekanisme many2many bisa dilihat di odoomates 15 tutorial vid 57
+    appointment_count = fields.Integer(string='Appointment Count', compute='_compute_appointment_count', store=True)
+    appointment_ids = fields.One2many(comodel_name='hospital.appointment', inverse_name='patient_id', string='Appointments')
+    
+    
+    
+    @api.depends('appointment_ids')
+    def _compute_appointment_count(self):
+        for rec in self:
+            rec.appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=', rec.id)]) 
     
     @api.constrains('date_of_birth') #dekorator constraint menggunakan api.constrains, constraint akan mengecek field
     def _check_date_of_birth(self): #function yang dipanggil untuk selalu mengecek field
