@@ -9,6 +9,14 @@
             <field name="padding">5</field> <!--panjang total dari string sequence yang akan diberi sequence-->
             <field name="company_id" eval="False"/>
         </record>
+
+        <record id="seq_hospital_appointments" model="ir.sequence">
+            <field name="name">Hospital Appointments</field>
+            <field name="code">hospital.appointment</field> <!--nama code dianjurkan sesuai dengan konteks model yang diberi sequence-->
+            <field name="prefix">OP</field> <!--prefiks dari sequence, HP0010 maka HP adalah prefiks-->
+            <field name="padding">5</field> <!--panjang total dari string sequence yang akan diberi sequence-->
+            <field name="company_id" eval="False"/>
+        </record>
     
     </data>
     

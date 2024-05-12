@@ -28,6 +28,7 @@
             <field name="arch" type="xml">
                 <tree decoration-success="state == 'done'"  decoration-danger="state == 'cancel'" sample="1" multi_edit="1"> <!--create="0" meniadakan create record, delete="0" delete option, duplicate="0" duplicate opt, edit="0" edit opt, multi_edit enable multiediting -->
                     <!-- Add your fields here -->
+                    <field name="name" />
                     <field name="patient_id" />
                     <field name="ref" optional="hide"/> <!--penggunaan atribut optional menjadikan tree view memiliki dynamic field yang dapat dimunculkan atau disembunyikan scr manual oleh user-->
                     <field name="doctor_id" widget="many2one_avatar_user"/> <!--widget m2o_avatar berguna menampilkan avatar image pada field m2o pada tree view, widget m2o_avatar tampil avatar dan chat dengan user ybs. chat akan muncul di notification user!-->
@@ -54,13 +55,20 @@
                         <header> <!--penempatan statusbar berada pada header form options="{'clickable':'1'}"-->
                             <button string="In Consultation" states="draft" name="action_in_consultation" type="object" class="oe_highlight" data-hotkey="i"/> <!--button bertipe object memanggil function action_in_consultation pd model yang akan hanya muncul pada saat state = draft-->
                             <button string="Mark as Done" states="in_consultation" name="action_done" type="object" class="oe_highlight" data-hotkey="v"/>
-                            <button string="Cancel" states="draft,in_consultation" name="action_cancel" type="object" data-hotkey="z"/> <!--pemanggilan dgn object button dengan ORM method untuk memanggil action windows model lain juga dapat dilakukan tanpasintaks khusus action button-->
+                            <button string="Cancel" states="draft,in_consultation" name="%(om_hospital.cancel_appointment_wizard_action)d" type="action" 
+                            data-hotkey="z"/> <!--pemanggilan window action dengan action button menggunakan sintaks pada atr name, active_id membuat field langsung memilih record_id yang sedang aktif untuk ditampilkan pada suatu field, context="{'default_appointment_id': active_id}"-->
+                            <!-- <button string="Cancel" states="draft,in_consultation" name="action_cancel" type="object" data-hotkey="z"/> pemanggilan dgn object button dengan ORM method untuk memanggil action windows model lain juga dapat dilakukan tanpasintaks khusus action button -->
                             <button string="Revert to Draft" states="cancel" name="action_draft" type="object" data-hotkey="n"/> <!--data-hotkey untuk memunculkan hotkey pada button yang tidak mendapatkan default hotkey-->
                             <field name="state" widget="statusbar" nolabel="1"   
                             statusbar_visible="draft, in_consultation, done"/> <!--penggunaan statusbar menggunakan widget="statusbar"-->
                             <!--value clickable agar statusbar dapat diklik scr manual -->
                             <!--statusbar_visible agar menampilkan value selection state mana yang akan dimunculkan-->
                         </header>
+                        <div>
+                            <h1> <!--ukuran widget akan berdasarkan heading ini-->
+                                <field name="name" readonly="1"/> <!--penambahan widget priority-->
+                            </h1>
+                        </div>
                         <div>
                             <h1> <!--ukuran widget akan berdasarkan heading ini-->
                                 <field name="priority" widget="priority" class="mr-3"/> <!--penambahan widget priority-->

@@ -9,6 +9,8 @@ class CancelAppointmentWizard(models.TransientModel): #transient model dibutuhka
     def default_get(self, fields):  #default_get function terpanggil saat mengklik wizard transientmodel
         res = super(CancelAppointmentWizard, self).default_get(fields)  #function ini akan memanggil default value yang ditetapkan dalam bentuk dictionary field:value
         res['date_cancel'] = datetime.date.today() #pemanggilan res dengan key (field_name) dan penetapan value baru dengan overriding 
+        if self.env.context.get('active_id'):
+            res['appointment_id'] = self.env.context.get('active_id') #default value dari appointment_id menggunakan orm method dan ambil active_id
         return res
         #inheriting default_get() must be placed before anything else within the code
         #overriding field dengan function dari modul bawaan python datetime dgn class datetime method today

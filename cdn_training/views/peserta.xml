@@ -138,7 +138,7 @@
             <field name="res_model">peserta</field>
             <field name="view_mode">tree,form,kanban</field>
             <field name="domain">[('jenis_kel','=','L')]</field>
-            <field name="context">{'default_jenis_kel':'L','default_is_menikah':True}</field>
+            <field name="context">{'default_jenis_kel':'L','default_is_menikah':True}</field> 
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     <!-- Add Text Here -->

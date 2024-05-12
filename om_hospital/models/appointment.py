@@ -5,8 +5,9 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     _name              = 'hospital.appointment' #all lowercase with . for the space
     _description       = 'Hospital Appointment'
     _inherit           = ['mail.thread', 'mail.activity.mixin'] #inherit chatter
-    _rec_name          = 'ref' #_rec_name digunakan untuk model yang tidak memiliki native name field (biasanya digunakan untuk model yang dependen thd model lain) 
+    _rec_name          = 'name' #_rec_name digunakan untuk model yang tidak memiliki native name field (biasanya digunakan untuk model yang dependen thd model lain) 
 
+    name               = fields.Char(string='Sequence')
     patient_id         = fields.Many2one(comodel_name='hospital.patient', string='Patient') #many2one from hospital.patient model/table
     gender             = fields.Selection( related="patient_id.gender") #atribut selection tidak perlu disematkan asal field yang dijadikan relasi memiliki atribut tsb. related merupakan field readonly (bisa dijadikan False) dari sumber yang tidak akan diubah 
     appointment_time   = fields.Datetime(string='Appointment Time', default=fields.Datetime.now)
@@ -21,6 +22,16 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
                                         inverse_name='appointment_id', string='Pharmacy Lines') #pembuatan one2many, onenya adalah appointment_id dan many adalah record-record dari sebuah field yang akan diasosiasikan dgn appointment_id (product.product)
     hide_sales_price   = fields.Boolean(string='Hide Sales Price')
     
+             
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
+        return super(HospitalAppointment, self).create(vals)
+    
+    def write(self, vals):
+        if not self.name and not vals.get('name'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
+        return super(HospitalAppointment, self).write(vals)
     
     
     #api onchange berubah saat terjadi saving record berbeda dengan depends

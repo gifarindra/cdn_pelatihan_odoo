@@ -17,6 +17,8 @@ class OdooPlayground(models.Model):
     #   -self.env.companies: Return a recordset of the enabled companies by the user
     #   -self.env.lang: Return the current language code \n\n\n\n'''
     
+    #self merupakan sebuah objek recordset yang mana kita bisa akses field2 hingga value dari field2 tsb dengan pernyataan self.
+    
     
     model_id = fields.Many2one(comodel_name='ir.model', string='Model')
     code = fields.Text(string='Code', default=DEFAULT_ENV_VARIABLES)
@@ -31,14 +33,3 @@ class OdooPlayground(models.Model):
             self.result = safe_eval(self.code.strip(), {'self':model})
         except Exception as e:
             self.result = str(e)
-    
-    def action_execute(self):
-        try:
-            if self.model_id:
-                model = self.env[self.model_id.model]
-            else:
-                model = self
-            self.result = safe_eval(self.code, {'self': self, 'model': model})
-        except Exception as e:
-            self.result = str(e)
-    
