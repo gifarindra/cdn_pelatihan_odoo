@@ -30,6 +30,7 @@
         'security/ir.model.access.csv',
         'data/patient_tag_data.xml', #penempatan direktori data harus sebelum security!
         'data/patient.tag.csv', #pembuatan record pada model patient.tag dengan file CSV dgn format id, name(nama_field), active(nama_field)
+        'data/sequence_data.xml', #pemanggilan sequence untuk hospital.patient
         'wizard/cancel_appointment_view.xml', #penempatan wizard sebelum views dan sesudah security merupakan common practice dari dir wizard
         'views/views.xml',
         'views/templates.xml',
