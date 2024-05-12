@@ -42,3 +42,16 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     #computed fields merupakan readonly field yang memiliki depedensi thd field lain (BUKAN RELATED FIELD) dan tidak menerima input scr manual
     #computed field dieksekusi setelah ada action save tanpa api depends
     #jika age dijadikan computed field, maka field age dibuat dalam postgres setelah dob diberi value maka filtering berdasarkan computed field tdk dpt dilakukan
+    
+    def name_get(self): #pembuatan name_get() baru yang akan dipanggil saat pembuatan record baru,name_get() lama hanya akan memanggil self._rec_name dari model
+        return [(record.id, "[%s] %s" % (record.ref, record.name)) for record in self] #%s akan diganti oleh record.ref dan record.name, looping satu baris py
+        
+        '''
+        patient_list = [] #name_get() baru akan membuat name yang dipanggil berupa ref + name record
+        for record in self:
+            name = record.ref + ' ' + record.name # penggabungan string ref + name 
+            patient_list.append((record.id, name)) #method append pada sebuah tuple record.id dan variabel name
+            
+        return patient_list #pemanggilan patient_list dimana var ini akan dipanggil sebagai nama
+        '''
+    #name_get() dari model sendiri akan dipilih terlebih dahulu daripada name_get() module lain / dari models.py(bawaan odoo)(?)

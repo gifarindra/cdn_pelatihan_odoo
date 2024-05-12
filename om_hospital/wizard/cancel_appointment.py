@@ -10,6 +10,7 @@ class CancelAppointmentWizard(models.TransientModel): #transient model dibutuhka
         res = super(CancelAppointmentWizard, self).default_get(fields)  #function ini akan memanggil default value yang ditetapkan dalam bentuk dictionary field:value
         res['date_cancel'] = datetime.date.today() #pemanggilan res dengan key (field_name) dan penetapan value baru dengan overriding 
         return res
+        #inheriting default_get() must be placed before anything else within the code
         #overriding field dengan function dari modul bawaan python datetime dgn class datetime method today
         #variabel fields berisi list field2 yang telah didefinisi, variable res merupakan dictionary dari field yang telah diberi default value
         
