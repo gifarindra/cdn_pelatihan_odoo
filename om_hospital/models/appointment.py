@@ -1,5 +1,5 @@
-from odoo import models, fields, api
-
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     _name              = 'hospital.appointment' #all lowercase with . for the space
@@ -25,12 +25,17 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
              
     @api.model
     def create(self, vals):
-        vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
+        vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment') #create method inheritance
         return super(HospitalAppointment, self).create(vals)
+    
+    def unlink(self):
+        if self.state != 'draft': #raise error when the condition is met
+            raise ValidationError (_('The state of the record is not in draft and cannot be deleted.')) 
+        return super(HospitalAppointment, self).unlink()
     
     def write(self, vals):
         if not self.name and not vals.get('name'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment')
+            vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment') #write method
         return super(HospitalAppointment, self).write(vals)
     
     

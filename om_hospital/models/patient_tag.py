@@ -13,7 +13,7 @@ class PatientTag(models.Model):
     sequence = fields.Integer(string='Sequence')
     
     @api.returns('self', lambda value: value.id) #copy method syntax executed whenever duplicate record is pressed
-    def copy(self, default=None): #copy method digunakan untuk mengatasi masalah duplikasi yang terhalangi sql constraint
+    def copy(self, default=None): #copy method inheritance dilakukan untuk mengatasi masalah duplikasi yang terhalangi sql constraint
         if default is None: 
             default = {} #making the default empty
             
