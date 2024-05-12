@@ -15,6 +15,7 @@
                             <field name="reason" />
                         </group>
                         <group >
+                            <field name="date_cancel" />
                         </group>
                     </group>
                     <footer> <!--tag ini untuk mengcustomize bagian footer dari popup (biasanya button)-->

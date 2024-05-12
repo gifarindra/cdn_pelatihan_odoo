@@ -19,7 +19,7 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     
     @api.model #perlu diberikan dekorator saat menginherit method (hanya create method saja??) dari model
     def create(self, vals): #ocreate snippet, untuk menginherit create method dari Models, ooverride snippet untuk override create method
-        vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient') #Penetapan value dari field juga dapat dilakukan secara implisit lewat inherit create method dengan mengambil field 'ref' dan menetapkannya thdp suatu nilai (dalam hal ini string OMTEST), nilai OMTEST akan menimpa nilai dari ref jk dibuat dari form view,
+        vals['ref'] = self.env['ir.sequence'].next_by_code('hospital.patient') #Overriding value field ref, Penetapan value dari field juga dapat dilakukan secara implisit lewat inherit create method dengan mengambil field 'ref' dan menetapkannya thdp suatu nilai (dalam hal ini string OMTEST), nilai OMTEST akan menimpa nilai dari ref jk dibuat dari form view,
         return super(HospitalPatient, self). create(vals) #function/method inheritance dari create() menggunakan super funct, arg vals berisi field2 yang telah dibuat pada model, return perlu diberikan
         #tipe struktur data dari variabel vals adalah dictionary dengan key = field dan value = value_field
     #penetapan value inherit create method jg berguna untuk sequencing dengan sintaks orm method, dimana self.env akan memanggil model ir.sequence dan memanggil fungsi next_by_code(fungsi berada di ir.sequence) dengan variable code_name_sequence dimana value yang dipanggil adalah field code
