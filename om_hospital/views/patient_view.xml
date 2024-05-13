@@ -31,6 +31,7 @@
                                     <field name="ref" readonly="1"/>
                                 </h4>
                                 <h2>
+                                    <label for="name" string="Name" class="oe_edit_only" /> <!--pembuatan label tanpa grouping scr manual, oe_edit_only membuat label ini dpt dilihat hanya dalam proses edit-->
                                     <field name="name" />
                                 </h2>
                             </div>
@@ -53,7 +54,7 @@
                                 <field name="parent" attrs="{'invisible':[('age', '>=', 18)]}"/><!--attrs pemberian kondisi pada field, attrs memiliki sintaks dictionary, value dapat berupa list-tuple, list-tuple bisa lebih dari satu, "|" ditambahpada list-tuple untuk operasi OR-->
                                 <field name="marital_status"  attrs="{'invisible':[('age', '&lt;=', 18)]}" />
                                 <field name="partner_name" attrs="{'readonly':[('marital_status', '!=', 'married')], 
-                                'required': [('marital_status', '=', 'married')]}" />
+                                'required': [('marital_status', '=', 'married')]}" /> <!--dapat berupa readonly, required, atau invisible dengan kondisi tertentu-->
                             </group>
                         </group>
                     </sheet>
