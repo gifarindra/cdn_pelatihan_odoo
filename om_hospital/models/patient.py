@@ -18,7 +18,13 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     image             = fields.Image(string='Image')
     tag_ids           = fields.Many2many(comodel_name='patient.tag', string='Patient Tags') #penjelasan lengkap mengenai mekanisme many2many bisa dilihat di odoomates 15 tutorial vid 57
     appointment_count = fields.Integer(string='Appointment Count', compute='_compute_appointment_count', store=True)
-    appointment_ids = fields.One2many(comodel_name='hospital.appointment', inverse_name='patient_id', string='Appointments')
+    appointment_ids   = fields.One2many(comodel_name='hospital.appointment', inverse_name='patient_id', string='Appointments')
+    parent            = fields.Char(string='Parent')
+    marital_status    = fields.Selection(string='Marital Status', selection=[('married', 'Married'), ('single', 'Single')], tracking= True)
+    partner_name      = fields.Char(string='Partner Name')
+    
+    
+    
     
     
     

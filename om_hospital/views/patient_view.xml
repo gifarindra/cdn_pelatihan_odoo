@@ -32,8 +32,6 @@
                                 <field name="name" />
                                 <field name="date_of_birth" />
                                 <field name="age" />
-                                <field name="appointment_count" />
-                                <!-- <field name="appointment_id" /> -->
                             </group>
                             <group >
                                 <!-- Add your fields here -->
@@ -41,6 +39,13 @@
                                 <field name="gender" invisible="context.get('hide_gender')"/> 
                                 <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/> <!--menambahkan opsi colorfield untuk widget m2m_tags dengan field dari model yang berbeda(?)-->
                                 <field name="active" invisible = "1"/> <!--add the archive feature inside the form view-->
+                                <field name="appointment_count" />
+                                <!-- <field name="appointment_id" /> -->
+                            </group>
+                            <group name="other_info" string="Other Information">
+                                <field name="parent" attrs="{'invisible':['|',('age', '>', 18), ('gender', '=','male')]}"/><!--attrs pemberian kondisi pada field, attrs memiliki sintaks dictionary, value dapat berupa list-tuple, list-tuple bisa lebih dari satu, "|" ditambahpada list-tuple untuk operasi OR-->
+                                <field name="marital_status" />
+                                <field name="partner_name" />
                             </group>
                         </group>
                     </sheet>
