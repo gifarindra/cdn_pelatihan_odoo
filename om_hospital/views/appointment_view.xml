@@ -44,6 +44,9 @@
                            decoration-danger="state == 'cancel'"
                            decoration-warning="state == 'in_consultation'"
                            widget="badge" /> <!--penambahan field state dan memberikan widget badge serta decorationnya ke list view, success green info lightblue danger red warning yellow -->
+                    <button name="action_done" type="object" attrs="{'invisible': [('state','!=','in_consultation')]}" class="fa fa-check btn-success"/> <!--penempatan button sebagai kolom di list view, class dapat dicek di fontawesomcheatsheet.com-->
+                    <button name="%(om_hospital.cancel_appointment_wizard_action)d" type="action" context="{'hide_appointment': 1}" 
+                            attrs="{'invisible': [('state','not in',('draft','in_consultation'))]}" class="fa fa-times btn-danger"/>
                 </tree>
             </field>
         </record>

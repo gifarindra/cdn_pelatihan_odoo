@@ -26,4 +26,5 @@ class CancelAppointmentWizard(models.TransientModel): #transient model dibutuhka
     def action_cancel(self):
         if self.appointment_id.booking_date == fields.Date.today(): #mengecek apabila booking_date sama dengan tanggal hari ini
             raise ValidationError (_('Sorry, you are not allowed to cancel on the same day as today.')) #raise validation error jika if dipenuhi dengan string error
+        self.appointment_id.state = 'cancel'
         return
