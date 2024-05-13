@@ -25,7 +25,7 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     @api.depends('appointment_ids')
     def _compute_appointment_count(self):
         for rec in self:
-            rec.appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=', rec.id)]) 
+            rec.appointment_count = self.env['hospital.appointment'].search_count([('patient_id', '=', rec.id)]) #counting value patient_id dengan hospital.patient.id 
     
     @api.constrains('date_of_birth') #dekorator constraint menggunakan api.constrains, constraint akan mengecek field
     def _check_date_of_birth(self): #function yang dipanggil untuk selalu mengecek field

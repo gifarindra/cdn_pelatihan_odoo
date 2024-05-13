@@ -8,7 +8,7 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     _rec_name          = 'name' #_rec_name digunakan untuk model yang tidak memiliki native name field (biasanya digunakan untuk model yang dependen thd model lain) 
 
     name               = fields.Char(string='Sequence')
-    patient_id         = fields.Many2one(comodel_name='hospital.patient', string='Patient') #many2one from hospital.patient model/table
+    patient_id         = fields.Many2one(comodel_name='hospital.patient', string='Patient', ondelete="restrict") #many2one from hospital.patient model/table, ondelete restrict berarti apabila id telah dipanggil oleh m2o ini maka reccord tidak dapat dihapus, ondelete cascade membuat record yang dijadikan acuan akan ikut terhapus di comodelnya
     gender             = fields.Selection( related="patient_id.gender") #atribut selection tidak perlu disematkan asal field yang dijadikan relasi memiliki atribut tsb. related merupakan field readonly (bisa dijadikan False) dari sumber yang tidak akan diubah 
     appointment_time   = fields.Datetime(string='Appointment Time', default=fields.Datetime.now)
     booking_date       = fields.Date(string='Booking Date',default=fields.Date.context_today) #format tanggal dapat diubah di settings, languages, en_US, dateformat
