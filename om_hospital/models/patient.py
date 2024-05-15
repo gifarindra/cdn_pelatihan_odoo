@@ -1,6 +1,7 @@
 from odoo import models, fields, api, _ #_ perlu diimport saat melakukan validation error
 from datetime import date
 from odoo.exceptions import ValidationError #jangan lupa impor _
+from dateutil import relativedelta
 
 
 class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
@@ -11,7 +12,7 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     name              = fields.Char(string='Name', tracking=True)   #fields ofc  #tracking the field with the chatter field dgn nama "name" merupakan special syntax untuk memunculkan nama sbg name field
     date_of_birth     = fields.Date(string='Date of Birth') #sumber computed field age
     ref               = fields.Char(string='Reference', tracking=True)
-    age               = fields.Integer(string='Age', tracking=True, compute='_compute_age') #ofint #computed fields
+    age               = fields.Integer(string='Age', tracking=True, compute='_compute_age', inverse='_inverse_compute_age') #ofint #computed fields, inverse adalah inverse function dmn age bisa diberi value dan dapat mengisi field dob
     gender            = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),], tracking=True, default='male') #ofsel
     active            = fields.Boolean(string='Active', default=True, tracking=True) #add the archive feature on the form view 
     appointment_id    = fields.Many2one(comodel_name='hospital.appointment', string='Appointments')
@@ -71,6 +72,12 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     #computed fields merupakan readonly field yang memiliki depedensi thd field lain (BUKAN RELATED FIELD) dan tidak menerima input scr manual
     #computed field dieksekusi setelah ada action save tanpa api depends
     #jika age dijadikan computed field, maka field age dibuat dalam postgres setelah dob diberi value maka filtering berdasarkan computed field tdk dpt dilakukan
+    
+    @api.depends('age') #inverse funct dari computed field
+    def _inverse_compute_age(self):
+        for rec in self:
+            today       = date.today() # memanggil fungsi today() dari modul py date dengan variable today
+            rec.date_of_birth = today - relativedelta.relativedelta(years=rec.age) #mengambil tanggal hari ini dan dikurangi dengan nilai tahun dari rec.age
     
     def name_get(self): #pembuatan name_get() baru yang akan dipanggil saat pembuatan record baru,name_get() lama hanya akan memanggil self._rec_name dari model
         return [(record.id, "[%s] %s" % (record.ref, record.name)) for record in self] #%s akan diganti oleh record.ref dan record.name, looping satu baris py
