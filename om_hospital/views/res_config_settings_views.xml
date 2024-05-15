@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//div[hasclass('settings')]" position="inside"> <!--xpath untuk penambahan elemen2 html pada form view settings modul om_hospital-->
                     <div class="app_settings_block" data-string="Hospital" id="hospital" string="Hospital" data-key="om_hospital" > <!--app_settings_block wajib!, data-string untuk tampilan panel, data-key sesuai nama modul-->
-                        <h2>Hospital Management</h2> 
+                        <h2>Hospital Management</h2> <!--wow-->
                         <div class="row mt16 o_settings_container" id="hospital_setting">
                             <div class="col-12 col-lg-6 o_setting_box">
                                 <div class="o_setting_left_pane"/>

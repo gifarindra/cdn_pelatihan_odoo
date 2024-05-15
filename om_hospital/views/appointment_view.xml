@@ -54,7 +54,7 @@
                     </groupby>
                 </tree>
             </field>
-        </record>
+        </record> <!--wow-->
 
         <!-- hospital.appointment form view -->
         <record id="hospital_appointment_view_form" model="ir.ui.view">
