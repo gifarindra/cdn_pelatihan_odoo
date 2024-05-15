@@ -12,7 +12,7 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     name              = fields.Char(string='Name', tracking=True)   #fields ofc  #tracking the field with the chatter field dgn nama "name" merupakan special syntax untuk memunculkan nama sbg name field
     date_of_birth     = fields.Date(string='Date of Birth') #sumber computed field age
     ref               = fields.Char(string='Reference', tracking=True)
-    age               = fields.Integer(string='Age', tracking=True, compute='_compute_age', inverse='_inverse_compute_age') #ofint #computed fields, inverse adalah inverse function dmn age bisa diberi value dan dapat mengisi field dob
+    age               = fields.Integer(string='Age', tracking=True, compute='_compute_age', inverse='_inverse_compute_age', search='_search_age') #ofint #computed fields, inverse adalah inverse function dmn age bisa diberi value dan dapat mengisi field dob
     gender            = fields.Selection(string='Gender', selection=[('male', 'Male'), ('female', 'Female'),], tracking=True, default='male') #ofsel
     active            = fields.Boolean(string='Active', default=True, tracking=True) #add the archive feature on the form view 
     appointment_id    = fields.Many2one(comodel_name='hospital.appointment', string='Appointments')
@@ -23,9 +23,6 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     parent            = fields.Char(string='Parent')
     marital_status    = fields.Selection(string='Marital Status', selection=[('married', 'Married'), ('single', 'Single')], tracking= True)
     partner_name      = fields.Char(string='Partner Name')
-    
-    
-    
     
     
     
@@ -78,6 +75,14 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
         for rec in self:
             today       = date.today() # memanggil fungsi today() dari modul py date dengan variable today
             rec.date_of_birth = today - relativedelta.relativedelta(years=rec.age) #mengambil tanggal hari ini dan dikurangi dengan nilai tahun dari rec.age
+            
+    def _search_age(self, operator, value): #arg harus 3 ini, pembuatan search function adalah cara lain untuk membuat computed field dapat dicari nilainya selain menggunakan store=True
+        date_of_birth = date.today() - relativedelta.relativedelta(years=value)
+        start_of_year = date_of_birth.replace(day=1,month=1) #variable awal tahun untuk ubah dob menjadi awal tahun
+        end_of_year = date_of_birth.replace(day=31,month=12) #jadi akhir tahun, gunanya untuk filtrasi day dan month, untuk menghitung tahunnya saja
+        return [('date_of_birth', '>=', start_of_year), ('date_of_birth', '<=', end_of_year)] #nilai return harus berupa domain, value field dob sama dgn value dob funct
+        #arg value memiliki nilai search value dari searchbar
+        
     
     def name_get(self): #pembuatan name_get() baru yang akan dipanggil saat pembuatan record baru,name_get() lama hanya akan memanggil self._rec_name dari model
         return [(record.id, "[%s] %s" % (record.ref, record.name)) for record in self] #%s akan diganti oleh record.ref dan record.name, looping satu baris py
