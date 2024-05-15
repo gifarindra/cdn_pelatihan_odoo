@@ -23,6 +23,14 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     parent            = fields.Char(string='Parent')
     marital_status    = fields.Selection(string='Marital Status', selection=[('married', 'Married'), ('single', 'Single')], tracking= True)
     partner_name      = fields.Char(string='Partner Name')
+    is_birthday       = fields.Boolean(string='Birthday?', compute='_compute_is_birthday')
+    phone = fields.Char(string='Phone Number')
+    email = fields.Char(string='Email')
+    website = fields.Char(string='Website')
+    
+    
+    
+    
     
     
     
@@ -104,3 +112,13 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     def action_done(self):
         print("Button Clicked!")
         return
+    
+    @api.depends('date_of_birth')
+    def _compute_is_birthday(self):
+        for rec in self:
+            is_birthday = False
+            if rec.date_of_birth:
+                today = date.today()
+                if today.day == rec.date_of_birth.day and today.month == rec.date_of_birth.month:
+                    is_birthday = True
+            rec.is_birthday = is_birthday

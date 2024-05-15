@@ -26,6 +26,14 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <div class="alert alert-info text-center o_form_header" role="alert" attrs="{'invisible':[('is_birthday', '=', False)]}"> <!--div ini untuk memunculkan tampilan alert pada form view!-->
+                            <a class="close" data-dismiss="alert" href="#"></a> <!--memunculkan close mark-->
+                            <div>
+                                <strong>Today is your birthday!</strong>
+                            </div>
+                            <div>Wish <field name="name" readonly="1"/>
+                            </div>
+                        </div>
                         <field name="image" widget="image" class="oe_avatar"/> <!--menampilkan field image dengan widget image agar gambar yg diunggah muncul, class="oe_avatar" agar dapat mendapat css dgn oe_avatar-->
                         <div class="oe_title">
                                 <h4>
@@ -49,13 +57,22 @@
                                 <field name="tag_ids" widget="many2many_checkboxes" options="{'color_field': 'color'}"/> <!--menambahkan opsi colorfield untuk widget m2m_tags untuk percantik tampilan m2m, m2m_checkboxes untuk tampilan checkbox m2m-->
                                 <field name="active" invisible = "1"/> <!--add the archive feature inside the form view-->
                                 <field name="appointment_count" />
+                                <field name="is_birthday" />
                                 <!-- <field name="appointment_id" /> -->
                             </group>
-                            <group name="other_info" string="Other Information">
+                            
+                        </group>
+                        <group name="other_info" string="Other Information">
+                            <group>
                                 <field name="parent" attrs="{'invisible':[('age', '>=', 18)]}"/><!--attrs pemberian kondisi pada field, attrs memiliki sintaks dictionary, value dapat berupa list-tuple, list-tuple bisa lebih dari satu, "|" ditambahpada list-tuple untuk operasi OR-->
                                 <field name="marital_status"  attrs="{'invisible':[('age', '&lt;=', 18)]}" />
                                 <field name="partner_name" attrs="{'readonly':[('marital_status', '!=', 'married')], 
                                 'required': [('marital_status', '=', 'married')]}" /> <!--dapat berupa readonly, required, atau invisible dengan kondisi tertentu-->
+                            </group>
+                            <group>
+                                <field name="phone" widget="phone"/> <!--untuk membuat field dianggap sbg nomor hp betulan, ada fitur sms call-->
+                                <field name="email" widget="email"/>
+                                <field name="website" widget="website" />
                             </group>
                         </group>
                     </sheet>
