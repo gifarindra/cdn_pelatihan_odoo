@@ -31,7 +31,8 @@
                     <header>
                         <button string="In Consultation" name="action_in_consultation" type="object"/> <!--pembuatan button pada tree view di dalam tag header-->
                     </header>
-                    <field name="name" />
+                    <field name="id" />
+                    <field name="name"/>
                     <field name="patient_id" />
                     <field name="ref" optional="hide"/> <!--penggunaan atribut optional menjadikan tree view memiliki dynamic field yang dapat dimunculkan atau disembunyikan scr manual oleh user-->
                     <field name="doctor_id" widget="many2one_avatar_user"/> <!--widget m2o_avatar berguna menampilkan avatar image pada field m2o pada tree view, widget m2o_avatar tampil avatar dan chat dengan user ybs. chat akan muncul di notification user!-->
