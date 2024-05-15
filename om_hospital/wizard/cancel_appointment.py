@@ -31,4 +31,7 @@ class CancelAppointmentWizard(models.TransientModel): #transient model dibutuhka
         if allowed_date < date.today(): #mengecek apabila allowed date kurang dari tanggal hari ini
             raise ValidationError (_('Sorry, you are only allowed to cancel maximum 5 days before your booking date.')) #raise validation error jika if dipenuhi dengan string error
         self.appointment_id.state = 'cancel'
-        return
+        return {
+            'type': 'ir.actions.client', #kedua baris ini penting untuk mereload halaman saat button dipencet
+            'tag' : 'reload', 
+        }
