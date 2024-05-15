@@ -11,10 +11,10 @@
                     <group>
                         <!-- Add your fields here -->
                         <field name="model_id" />
-                        <field name="code" widget="ace" options="{'mode':'python'}"/>
+                        <field name="code" widget="ace" options="{'mode':'python'}"/> <!--membuat field code dianggap sebagai sebuah code editor untuk python-->
                     </group>
                     <group>
-                        <button string="Execute" name="action_execute" type="object" class="btn_primary" data-hotkey="q"/>
+                        <button string="Execute" name="action_execute" type="object" class="btn_primary oe_highlight" data-hotkey="q"/>
                     </group>
                     <group>
                         <field name="result" />

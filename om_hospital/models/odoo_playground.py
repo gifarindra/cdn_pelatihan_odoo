@@ -6,16 +6,7 @@ class OdooPlayground(models.Model):
     _name = 'odoo.playground'
     _description = 'Odoo Playground'
 
-    DEFAULT_ENV_VARIABLES = '''#Available Variables:
-    #   -self: Current Object
-    #   -self.env: Odoo environment on which the action has been triggered
-    #   -self.env.user: Return to the current user (as an instance)
-    #   -self.env.is_system: Return whether the current user has group "Settings", or is in SuperUser Mode
-    #   -self.env.is_admin: Return whether the current user has group "Access Rights", or is in Superuser Mode
-    #   -self.env.is_superuser: Return whether the environment is in superuser mode
-    #   -self.env.company:  Return the current company (as an instance)
-    #   -self.env.companies: Return a recordset of the enabled companies by the user
-    #   -self.env.lang: Return the current language code \n\n\n\n'''
+    DEFAULT_ENV_VARIABLES = ''''''
     
     #self merupakan sebuah objek recordset yang mana kita bisa akses field2 hingga value dari field2 tsb dengan pernyataan self.
     
