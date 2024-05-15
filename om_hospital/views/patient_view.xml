@@ -44,7 +44,7 @@
                             </group>
                             <group >
                                 <!-- Add your fields here -->
-                                <field name="gender" invisible="context.get('hide_gender')"/> 
+                                <field name="gender" widget="radio" invisible="context.get('hide_gender')"/>  <!--radio widget untuk percantik tampilan-->
                                 <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/> <!--menambahkan opsi colorfield untuk widget m2m_tags dengan field dari model yang berbeda(?)-->
                                 <field name="active" invisible = "1"/> <!--add the archive feature inside the form view-->
                                 <field name="appointment_count" />
