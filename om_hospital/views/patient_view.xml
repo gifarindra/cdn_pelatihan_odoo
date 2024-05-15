@@ -11,7 +11,8 @@
                     <!-- Add your fields here -->
                     <field name="name" string="Patient Name" />
                     <field name="ref" />
-                    <field name="age" />
+                    <field name="age" avg="Average Age"/> <!--self explanatory atr-->
+                    <field name="appointment_count" sum="Total Appointment"/> <!--atr sum akan menjumlahkan field dari setiap record dan ditambahi string bebas, avg mengkalkulasi rata2-->
                     <field name="gender" />
                     <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 </tree>
