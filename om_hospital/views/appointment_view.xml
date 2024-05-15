@@ -47,6 +47,10 @@
                     <button name="action_done" type="object" attrs="{'invisible': [('state','!=','in_consultation')]}" class="fa fa-check btn-success"/> <!--penempatan button sebagai kolom di list view, class dapat dicek di fontawesomcheatsheet.com-->
                     <button name="%(om_hospital.cancel_appointment_wizard_action)d" type="action" context="{'hide_appointment': 1}" 
                             attrs="{'invisible': [('state','not in',('draft','in_consultation'))]}" class="fa fa-times btn-danger"/>
+                    <groupby name="patient_id"> <!--memunculkan button2 berikut saat grouping berdasar name="(field_name)" dilakukan, groupby hanya menerima field m2o-->
+                        <button string="Click Me" name="action_test" type="object" class="oe_highlight"/> <!--Fungsi yang akan dieksekusi adalah fungsi yang dijadikan comodel dalam field tsb -->
+                        <!-- <button string="Edit" name="action_name" type="edit"/>, button edit tidak ada dalam odoo16-->
+                    </groupby>
                 </tree>
             </field>
         </record>

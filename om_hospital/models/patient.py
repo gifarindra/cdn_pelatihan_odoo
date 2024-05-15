@@ -38,6 +38,13 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
         for rec in self:
             if rec.date_of_birth and rec.date_of_birth > fields.Date.today(): #jika dob melebihi tanggal sekarang maka Validation Error muncul
                 raise ValidationError (_('The value of date of birth is not valid!'))
+            
+    @api.ondelete(at_uninstall=False) #dekorator akan terpanggil saat ada penghapusan record yang memiliki kondisi yg dicantumkan, at uninstall membuat dekorator tidak terpanggil saat ada proses uninstall modul
+    def _check_appointment(self): #private function selalu diawali underscore
+        for rec in self:
+            if rec.appointment_ids: #Kondisi yang akan dicek jika ada penghapusan record pada model
+                raise ValidationError (_('You have an appointment prepared!'))
+                
     
     @api.model #perlu diberikan dekorator saat menginherit method (hanya create method saja??) dari model
     def create(self, vals): #ocreate snippet, untuk menginherit create method dari Models, ooverride snippet untuk override create method
@@ -77,3 +84,7 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
         return patient_list #pemanggilan patient_list dimana var ini akan dipanggil sebagai nama
         '''
     #name_get() dari model sendiri akan dipilih terlebih dahulu daripada name_get() module lain / dari models.py(bawaan odoo)(?)
+    
+    def action_test(self):
+        print("Button Clicked!")
+        return
