@@ -1,5 +1,6 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+import random
 
 class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
     _name              = 'hospital.appointment' #all lowercase with . for the space
@@ -23,6 +24,8 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
                                         inverse_name='appointment_id', string='Pharmacy Lines') #pembuatan one2many, onenya adalah appointment_id dan many adalah record-record dari sebuah field yang akan diasosiasikan dgn appointment_id (product.product)
     hide_sales_price   = fields.Boolean(string='Hide Sales Price')
     operation_id       = fields.Many2one(comodel_name='hospital.operation', string='Operation')
+    progress           = fields.Integer(string='Progress', compute='_compute_progress')
+    
     
     
              
@@ -74,6 +77,19 @@ class HospitalAppointment(models.Model): #table (postgres)/ models(odoo)  omod
         for rec in self:
             rec.state = 'draft'
     #penggunaan atr default cukup berguna untuk beberapa field, pahami kapan dan dimana penggunaannya!
+    
+    @api.depends('state')
+    def _compute_progress(self):
+        for rec in self:
+            if rec.state == 'draft':
+                progress = random.randrange(0,25) #random antara 0-25
+            elif rec.state == 'in_consultation':
+                progress = random.randrange(26,99) #random antara 26-75
+            elif rec.state == 'done':
+                progress = 100
+            else:
+                progress = 0
+            rec.progress = progress
 
 
 class AppointmentPharmacyLines(models.Model):

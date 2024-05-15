@@ -67,6 +67,7 @@
                         <!-- <button name="action_done" type="object" string="Test"/> penambahan button pada tree view group by -->
                         <!-- <button string="Edit" name="action_name" type="edit"/>, button edit tidak ada dalam odoo16-->
                     </groupby>
+                    <field name="progress" widget="progressbar" />
                 </tree>
             </field>
         </record> <!--wow-->
@@ -122,11 +123,12 @@
                             
                             </group>
                         </group>
-                        <notebook> <!--notebook dengan 2 pages-->
+                        <notebook> <!--notebook dengan n pages-->
+                            <page name="progress" string="Progress">
+                                <field name="progress"  widget="percentpie" />
+                            </page>
                             <page string="Prescription" name="prescription"> <!--untuk memunculkan label tambahkan group-->
-                                
                                 <field name="prescription" placeholder="Enter your prescription!" options ="{'collaborative': true, 'resizable': true, 'codeview' : true}"/> <!--placeholder agar memiliki nama, menjadikan fielf html bersifat kolaboratif dgn user lain dan dpt diubah ukurannya, codeview membuat codeview dapat dicantumkan pada HTML Field-->
-                                
                             </page>
                             <page string="Pharmacy" name="pharmacy">
                                 <field name="pharmacy_lines_ids">
