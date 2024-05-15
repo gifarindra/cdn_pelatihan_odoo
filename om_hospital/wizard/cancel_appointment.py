@@ -1,6 +1,8 @@
 from odoo import models, fields, api, _
 import datetime
 from odoo.exceptions import ValidationError
+from datetime import date
+from dateutil import relativedelta
 
 class CancelAppointmentWizard(models.TransientModel): #transient model dibutuhkan untuk pembuatan wizard (dan biasanya untuk tujuan lain dmn kita tidak perlu menyimpan data)
     _name = 'cancel.appointment.wizard'
@@ -23,8 +25,10 @@ class CancelAppointmentWizard(models.TransientModel): #transient model dibutuhka
     date_cancel = fields.Date(string='Cancellation Date')
     
     
-    def action_cancel(self):
-        if self.appointment_id.booking_date == fields.Date.today(): #mengecek apabila booking_date sama dengan tanggal hari ini
-            raise ValidationError (_('Sorry, you are not allowed to cancel on the same day as today.')) #raise validation error jika if dipenuhi dengan string error
+    def action_cancel(self): 
+        cancel_day        = self.env['ir.config_parameter'].get_param('om_hospital.cancel_days') #ambil config parameter dengan key om_hospital.cancel_days
+        allowed_date      = self.appointment_id.booking_date - relativedelta.relativedelta(days=int(cancel_day)) #typecast string to int
+        if allowed_date < date.today(): #mengecek apabila allowed date kurang dari tanggal hari ini
+            raise ValidationError (_('Sorry, you are only allowed to cancel maximum 5 days before your booking date.')) #raise validation error jika if dipenuhi dengan string error
         self.appointment_id.state = 'cancel'
         return
