@@ -93,6 +93,7 @@
                                 <field name="gender" />
                                 <field name="doctor_id" widget="many2one_avatar_user"/> <!--widget idem dengan tree view-->
                                 <field name="booking_date" default_focus="1" help="Date of booking"/> <!--default_focus untuk membuat kursor diarahkan ke field ini terlebih dahulu saat akan melakukan perubahan-->
+                                <field name="operation_id" />
                             </group>
                             <group>
                                 <field name="hide_sales_price"  />
