@@ -9,6 +9,9 @@ class HospitalOperation(models.Model):
 
     doctor_id = fields.Many2one(comodel_name='res.users', string='Doctor')
     operation_name = fields.Char(string='Operation Name')
+    # reference_record = fields.Reference(string='Record')
+    reference_record = fields.Reference(selection=[('hospital.patient','Patient'), ('hospital.appointment','Appointment')],string='Record') #Perlu ada selection (bentuk list-tuple) disini dimana saat string 'Patient' dipilih maka record pada hospital.patient akan muncul
+    #Reference field stores data in string data type (model_name, id) meanwhile m2o field stores in integer 
     #jika sebuah model tdk punya _rec_name atau tech field name maka pembuatan record dari field m2o ke model ini tidak akan tercatat
     
     @api.model #dekorator diberikan untuk name create model yang tidak ada rec_name atau name field
