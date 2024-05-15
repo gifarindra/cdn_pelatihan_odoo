@@ -24,3 +24,4 @@ class OdooPlayground(models.Model):
             self.result = safe_eval(self.code.strip(), {'self':model})
         except Exception as e:
             self.result = str(e)
+            
