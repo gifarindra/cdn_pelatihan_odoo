@@ -88,3 +88,7 @@ class HospitalPatient(models.Model): #table (postgres)/ models(odoo)  omod
     def action_test(self):
         print("Button Clicked!")
         return
+    
+    def action_done(self):
+        print("Button Clicked!")
+        return
