@@ -15,7 +15,7 @@
                             <field name="reason" />
                         </group>
                         <group>
-                            <field name="date_cancel" /> <!--wows-->
+                            <field name="date_cancel" /> <!--aaaa-->
                         </group>
                     </group>
                     <footer> <!--tag ini untuk mengcustomize bagian footer dari popup (biasanya button)-->
